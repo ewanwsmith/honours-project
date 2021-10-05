@@ -1,0 +1,7 @@
+name = "honoursproject"
+uuid = "fa2de902-c5c1-4c3c-9970-371c81244144"
+authors = ["ewsmith1 <63798599+ewsmith1@users.noreply.github.com>"]
+version = "0.1.0"
+
+[deps]
+MLJ = "add582a8-e3ab-11e8-2d5e-e98b27df1bc7"

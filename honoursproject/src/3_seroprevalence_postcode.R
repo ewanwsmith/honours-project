@@ -1,4 +1,7 @@
-# Read this shape file with the rgdal library.
+# read in study dataset
+study_dat <- read.csv(file = "./honoursproject/data/joined_data.csv", header = TRUE)
+
+# Read UK postcode shape file with the rgdal library.
 library(rgdal)
 spdf <- readOGR(
     dsn = paste0(getwd(), "/honoursproject/data/Shapefiles"),
@@ -6,6 +9,4 @@ spdf <- readOGR(
     verbose = FALSE
 )
 
-# Basic plot of shape file
-par(mar = c(0, 0, 0, 0))
-plot(spdf, col = "#f2f2f2", bg = "skyblue", lwd = 0.25, border = 0)
+spdf <- spdf[spdf@data %in% study_dat$PostcodePart, ]

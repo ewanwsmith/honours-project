@@ -2,8 +2,6 @@ using DataFrames, Query
 using CategoricalArrays
 using CSV
 using StatsBase
-using Distributions
-using MLJ
 
 # import ELISA data
 raw_ELISA_data = DataFrame(CSV.File("./honoursproject/data/S1_RBD_ELISAs.csv"; missingstring="NA", pool=true))
@@ -13,4 +11,4 @@ raw_metadata = DataFrame(CSV.File("./honoursproject/data/metadata.csv"; missings
 
 # join datasets
 joined_data = innerjoin(raw_ELISA_data, raw_metadata, on=:SampleID)
-
+joined_data |> CSV.write("./honoursproject/data/joined_data.csv")

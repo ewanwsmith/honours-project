@@ -3,6 +3,7 @@ using CategoricalArrays
 using CSV
 using StatsBase
 using Dates
+using Gadfly
 
 # import ELISA data
 raw_ELISA_data = DataFrame(CSV.File("./honoursproject/data/S1_RBD_ELISAs.csv"; missingstring="NA", pool=true))
@@ -19,5 +20,4 @@ data = combine(groupby(joined_data, :PatientID)) do sdf
     first(sort(sdf, :SampleDate, rev=true))
 end
 
-# proportion of seropositives per box
-box = groupby(data, :Box)
+data.SampleWeek = Dates.firstdayofweek(data.SampleDate)

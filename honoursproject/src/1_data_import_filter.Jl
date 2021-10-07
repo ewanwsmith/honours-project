@@ -12,3 +12,14 @@ raw_metadata = DataFrame(CSV.File("./honoursproject/data/metadata.csv"; missings
 # join datasets
 joined_data = innerjoin(raw_ELISA_data, raw_metadata, on=:SampleID)
 joined_data |> CSV.write("./honoursproject/data/joined_data.csv")
+
+# create date format
+# joined_data.SampleDate = DateTime(joined_data.SampleDate)
+
+# remove multiple observations
+data = combine(groupby(joined_data, :PatientID)) do sdf
+    sdf[argmin(sdf.SampleDate), :]
+end
+
+# proportion of seropositives per box
+box = groupby(data, :Box)

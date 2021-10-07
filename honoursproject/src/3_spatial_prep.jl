@@ -338,7 +338,7 @@ push!(Mar20_spa, (
         ((count(i -> (i > 0), Mar20_G90.S1_seropositive)) / length(Mar20_G90.S1_seropositive)),
         ((count(i -> (i > 0), Mar20_G90.RBD_seropositive)) / length(Mar20_G90.RBD_seropositive))))
 
-Mar20_spa |> CSV.write("./honoursproject/data/March_20_postcode_data.csv")
+Mar20_spa |> CSV.write("./honoursproject/data/by_postcode/March_20_postcode_data.csv")
 
 # April
 Apr20_spa = DataFrame(
@@ -672,7 +672,7 @@ push!(Apr20_spa, (
         ((count(i -> (i > 0), Apr20_G90.S1_seropositive)) / length(Apr20_G90.S1_seropositive)),
         ((count(i -> (i > 0), Apr20_G90.RBD_seropositive)) / length(Apr20_G90.RBD_seropositive))))
 
-Apr20_spa |> CSV.write("./honoursproject/data/April_20_postcode_data.csv")
+Apr20_spa |> CSV.write("./honoursproject/data/by_postcode/April_20_postcode_data.csv")
 
 # May
 May20_spa = DataFrame(
@@ -1006,7 +1006,7 @@ push!(May20_spa, (
         ((count(i -> (i > 0), May20_G90.S1_seropositive)) / length(May20_G90.S1_seropositive)),
         ((count(i -> (i > 0), May20_G90.RBD_seropositive)) / length(May20_G90.RBD_seropositive))))
 
-May20_spa |> CSV.write("./honoursproject/data/May_20_postcode_data.csv")
+May20_spa |> CSV.write("./honoursproject/data/by_postcode/May_20_postcode_data.csv")
 
 # June
 Jun20_spa = DataFrame(
@@ -1340,7 +1340,7 @@ push!(Jun20_spa, (
         ((count(i -> (i > 0), Jun20_G90.S1_seropositive)) / length(Jun20_G90.S1_seropositive)),
         ((count(i -> (i > 0), Jun20_G90.RBD_seropositive)) / length(Jun20_G90.RBD_seropositive))))
 
-Jun20_spa |> CSV.write("./honoursproject/data/Jun_20_postcode_data.csv")
+Jun20_spa |> CSV.write("./honoursproject/data/by_postcode/June_20_postcode_data.csv")
 
 # July
 Jul20_spa = DataFrame(
@@ -1674,7 +1674,7 @@ push!(Jul20_spa, (
         ((count(i -> (i > 0), Jul20_G90.S1_seropositive)) / length(Jul20_G90.S1_seropositive)),
         ((count(i -> (i > 0), Jul20_G90.RBD_seropositive)) / length(Jul20_G90.RBD_seropositive))))
 
-Jul20_spa |> CSV.write("./honoursproject/data/July_20_postcode_data.csv")
+Jul20_spa |> CSV.write("./honoursproject/data/by_postcode/July_20_postcode_data.csv")
 
 # August
 Aug20_spa = DataFrame(
@@ -2008,7 +2008,7 @@ push!(Aug20_spa, (
         ((count(i -> (i > 0), Aug20_G90.S1_seropositive)) / length(Aug20_G90.S1_seropositive)),
         ((count(i -> (i > 0), Aug20_G90.RBD_seropositive)) / length(Aug20_G90.RBD_seropositive))))
 
-Aug20_spa |> CSV.write("./honoursproject/data/August_20_postcode_data.csv")
+Aug20_spa |> CSV.write("./honoursproject/data/by_postcode/August_20_postcode_data.csv")
 
 # September
 Sep20_spa = DataFrame(
@@ -2342,7 +2342,7 @@ push!(Sep20_spa, (
         ((count(i -> (i > 0), Sep20_G90.S1_seropositive)) / length(Sep20_G90.S1_seropositive)),
         ((count(i -> (i > 0), Sep20_G90.RBD_seropositive)) / length(Sep20_G90.RBD_seropositive))))
 
-Sep20_spa |> CSV.write("./honoursproject/data/September_20_postcode_data.csv")
+Sep20_spa |> CSV.write("./honoursproject/data/by_postcode/September_20_postcode_data.csv")
 
 # October
 Oct20_spa = DataFrame(
@@ -2676,4 +2676,1006 @@ push!(Oct20_spa, (
         ((count(i -> (i > 0), Oct20_G90.S1_seropositive)) / length(Oct20_G90.S1_seropositive)),
         ((count(i -> (i > 0), Oct20_G90.RBD_seropositive)) / length(Oct20_G90.RBD_seropositive))))
 
-Oct20_spa |> CSV.write("./honoursproject/data/October_20_postcode_data.csv")
+Oct20_spa |> CSV.write("./honoursproject/data/by_postcode/October_20_postcode_data.csv")
+
+# November
+Nov20_spa = DataFrame(
+    Postcode=String[],
+    S1=Float64[],
+    RBD=Float64[],
+)
+
+        # G1
+Nov20_G1 = Nov20_data |> @filter(_.PostcodePart == "G1") |> DataFrame
+push!(Nov20_spa, (
+        ("G1"),
+        ((count(i -> (i > 0), Nov20_G1.S1_seropositive)) / length(Nov20_G1.S1_seropositive)),
+        ((count(i -> (i > 0), Nov20_G1.RBD_seropositive)) / length(Nov20_G1.RBD_seropositive))))
+        # G2
+Nov20_G2 = Nov20_data |> @filter(_.PostcodePart == "G2") |> DataFrame
+push!(Nov20_spa, (
+        ("G2"),
+        ((count(i -> (i > 0), Nov20_G2.S1_seropositive)) / length(Nov20_G2.S1_seropositive)),
+        ((count(i -> (i > 0), Nov20_G2.RBD_seropositive)) / length(Nov20_G2.RBD_seropositive))))
+        # G3
+Nov20_G3 = Nov20_data |> @filter(_.PostcodePart == "G3") |> DataFrame
+push!(Nov20_spa, (
+        ("G3"),
+        ((count(i -> (i > 0), Nov20_G3.S1_seropositive)) / length(Nov20_G3.S1_seropositive)),
+        ((count(i -> (i > 0), Nov20_G3.RBD_seropositive)) / length(Nov20_G3.RBD_seropositive))))
+        # G4
+Nov20_G4 = Nov20_data |> @filter(_.PostcodePart == "G4") |> DataFrame
+push!(Nov20_spa, (
+        ("G4"),
+        ((count(i -> (i > 0), Nov20_G4.S1_seropositive)) / length(Nov20_G4.S1_seropositive)),
+        ((count(i -> (i > 0), Nov20_G4.RBD_seropositive)) / length(Nov20_G4.RBD_seropositive))))
+        # G5
+Nov20_G5 = Nov20_data |> @filter(_.PostcodePart == "G5") |> DataFrame
+push!(Nov20_spa, (
+        ("G5"),
+        ((count(i -> (i > 0), Nov20_G5.S1_seropositive)) / length(Nov20_G5.S1_seropositive)),
+        ((count(i -> (i > 0), Nov20_G5.RBD_seropositive)) / length(Nov20_G5.RBD_seropositive))))
+        # G9
+Nov20_G9 = Nov20_data |> @filter(_.PostcodePart == "G9") |> DataFrame
+push!(Nov20_spa, (
+        ("G9"),
+        ((count(i -> (i > 0), Nov20_G9.S1_seropositive)) / length(Nov20_G9.S1_seropositive)),
+        ((count(i -> (i > 0), Nov20_G9.RBD_seropositive)) / length(Nov20_G9.RBD_seropositive))))
+        # G11
+Nov20_G11 = Nov20_data |> @filter(_.PostcodePart == "G11") |> DataFrame
+push!(Nov20_spa, (
+        ("G11"),
+        ((count(i -> (i > 0), Nov20_G11.S1_seropositive)) / length(Nov20_G11.S1_seropositive)),
+        ((count(i -> (i > 0), Nov20_G11.RBD_seropositive)) / length(Nov20_G11.RBD_seropositive))))
+        # G12
+Nov20_G12 = Nov20_data |> @filter(_.PostcodePart == "G12") |> DataFrame
+push!(Nov20_spa, (
+        ("G12"),
+        ((count(i -> (i > 0), Nov20_G12.S1_seropositive)) / length(Nov20_G12.S1_seropositive)),
+        ((count(i -> (i > 0), Nov20_G12.RBD_seropositive)) / length(Nov20_G12.RBD_seropositive))))
+        # G13
+Nov20_G13 = Nov20_data |> @filter(_.PostcodePart == "G13") |> DataFrame
+push!(Nov20_spa, (
+        ("G13"),
+        ((count(i -> (i > 0), Nov20_G13.S1_seropositive)) / length(Nov20_G13.S1_seropositive)),
+        ((count(i -> (i > 0), Nov20_G13.RBD_seropositive)) / length(Nov20_G13.RBD_seropositive))))
+        # G14
+Nov20_G14 = Nov20_data |> @filter(_.PostcodePart == "G14") |> DataFrame
+push!(Nov20_spa, (
+        ("G14"),
+        ((count(i -> (i > 0), Nov20_G14.S1_seropositive)) / length(Nov20_G14.S1_seropositive)),
+        ((count(i -> (i > 0), Nov20_G14.RBD_seropositive)) / length(Nov20_G14.RBD_seropositive))))
+        # G15
+Nov20_G15 = Nov20_data |> @filter(_.PostcodePart == "G15") |> DataFrame
+push!(Nov20_spa, (
+        ("G15"),
+        ((count(i -> (i > 0), Nov20_G15.S1_seropositive)) / length(Nov20_G15.S1_seropositive)),
+        ((count(i -> (i > 0), Nov20_G15.RBD_seropositive)) / length(Nov20_G15.RBD_seropositive))))
+        # G20
+Nov20_G20 = Nov20_data |> @filter(_.PostcodePart == "G20") |> DataFrame
+push!(Nov20_spa, (
+        ("G20"),
+        ((count(i -> (i > 0), Nov20_G20.S1_seropositive)) / length(Nov20_G20.S1_seropositive)),
+        ((count(i -> (i > 0), Nov20_G20.RBD_seropositive)) / length(Nov20_G20.RBD_seropositive))))
+        # G21
+Nov20_G21 = Nov20_data |> @filter(_.PostcodePart == "G21") |> DataFrame
+push!(Nov20_spa, (
+        ("G21"),
+        ((count(i -> (i > 0), Nov20_G21.S1_seropositive)) / length(Nov20_G21.S1_seropositive)),
+        ((count(i -> (i > 0), Nov20_G21.RBD_seropositive)) / length(Nov20_G21.RBD_seropositive))))
+        # G22
+Nov20_G22 = Nov20_data |> @filter(_.PostcodePart == "G22") |> DataFrame
+push!(Nov20_spa, (
+        ("G22"),
+        ((count(i -> (i > 0), Nov20_G22.S1_seropositive)) / length(Nov20_G22.S1_seropositive)),
+        ((count(i -> (i > 0), Nov20_G22.RBD_seropositive)) / length(Nov20_G22.RBD_seropositive))))
+        # G23
+Nov20_G23 = Nov20_data |> @filter(_.PostcodePart == "G23") |> DataFrame
+push!(Nov20_spa, (
+        ("G23"),
+        ((count(i -> (i > 0), Nov20_G23.S1_seropositive)) / length(Nov20_G23.S1_seropositive)),
+        ((count(i -> (i > 0), Nov20_G23.RBD_seropositive)) / length(Nov20_G23.RBD_seropositive))))
+        # G31
+Nov20_G31 = Nov20_data |> @filter(_.PostcodePart == "G31") |> DataFrame
+push!(Nov20_spa, (
+        ("G31"),
+        ((count(i -> (i > 0), Nov20_G31.S1_seropositive)) / length(Nov20_G31.S1_seropositive)),
+        ((count(i -> (i > 0), Nov20_G31.RBD_seropositive)) / length(Nov20_G31.RBD_seropositive))))
+        # G32
+Nov20_G32 = Nov20_data |> @filter(_.PostcodePart == "G32") |> DataFrame
+push!(Nov20_spa, (
+        ("G32"),
+        ((count(i -> (i > 0), Nov20_G32.S1_seropositive)) / length(Nov20_G32.S1_seropositive)),
+        ((count(i -> (i > 0), Nov20_G32.RBD_seropositive)) / length(Nov20_G32.RBD_seropositive))))
+        # G33
+Nov20_G33 = Nov20_data |> @filter(_.PostcodePart == "G33") |> DataFrame
+push!(Nov20_spa, (
+        ("G33"),
+        ((count(i -> (i > 0), Nov20_G33.S1_seropositive)) / length(Nov20_G33.S1_seropositive)),
+        ((count(i -> (i > 0), Nov20_G33.RBD_seropositive)) / length(Nov20_G33.RBD_seropositive))))
+        # G34
+Nov20_G34 = Nov20_data |> @filter(_.PostcodePart == "G34") |> DataFrame
+push!(Nov20_spa, (
+        ("G34"),
+        ((count(i -> (i > 0), Nov20_G34.S1_seropositive)) / length(Nov20_G34.S1_seropositive)),
+        ((count(i -> (i > 0), Nov20_G34.RBD_seropositive)) / length(Nov20_G34.RBD_seropositive))))
+        # G40
+Nov20_G40 = Nov20_data |> @filter(_.PostcodePart == "G40") |> DataFrame
+push!(Nov20_spa, (
+        ("G40"),
+        ((count(i -> (i > 0), Nov20_G40.S1_seropositive)) / length(Nov20_G40.S1_seropositive)),
+        ((count(i -> (i > 0), Nov20_G40.RBD_seropositive)) / length(Nov20_G40.RBD_seropositive))))
+        # G41
+Nov20_G41 = Nov20_data |> @filter(_.PostcodePart == "G41") |> DataFrame
+push!(Nov20_spa, (
+        ("G41"),
+        ((count(i -> (i > 0), Nov20_G41.S1_seropositive)) / length(Nov20_G41.S1_seropositive)),
+        ((count(i -> (i > 0), Nov20_G41.RBD_seropositive)) / length(Nov20_G41.RBD_seropositive))))
+        # G42
+Nov20_G42 = Nov20_data |> @filter(_.PostcodePart == "G42") |> DataFrame
+push!(Nov20_spa, (
+        ("G42"),
+        ((count(i -> (i > 0), Nov20_G42.S1_seropositive)) / length(Nov20_G42.S1_seropositive)),
+        ((count(i -> (i > 0), Nov20_G42.RBD_seropositive)) / length(Nov20_G42.RBD_seropositive))))
+        # G43
+Nov20_G43 = Nov20_data |> @filter(_.PostcodePart == "G43") |> DataFrame
+push!(Nov20_spa, (
+        ("G43"),
+        ((count(i -> (i > 0), Nov20_G43.S1_seropositive)) / length(Nov20_G43.S1_seropositive)),
+        ((count(i -> (i > 0), Nov20_G43.RBD_seropositive)) / length(Nov20_G43.RBD_seropositive))))
+        # G44
+Nov20_G44 = Nov20_data |> @filter(_.PostcodePart == "G44") |> DataFrame
+push!(Nov20_spa, (
+        ("G44"),
+        ((count(i -> (i > 0), Nov20_G44.S1_seropositive)) / length(Nov20_G44.S1_seropositive)),
+        ((count(i -> (i > 0), Nov20_G44.RBD_seropositive)) / length(Nov20_G44.RBD_seropositive))))
+        # G45
+Nov20_G45 = Nov20_data |> @filter(_.PostcodePart == "G45") |> DataFrame
+push!(Nov20_spa, (
+        ("G45"),
+        ((count(i -> (i > 0), Nov20_G45.S1_seropositive)) / length(Nov20_G45.S1_seropositive)),
+        ((count(i -> (i > 0), Nov20_G45.RBD_seropositive)) / length(Nov20_G45.RBD_seropositive))))
+        # G46
+Nov20_G46 = Nov20_data |> @filter(_.PostcodePart == "G46") |> DataFrame
+push!(Nov20_spa, (
+        ("G46"),
+        ((count(i -> (i > 0), Nov20_G46.S1_seropositive)) / length(Nov20_G46.S1_seropositive)),
+        ((count(i -> (i > 0), Nov20_G46.RBD_seropositive)) / length(Nov20_G46.RBD_seropositive))))
+        # G51
+Nov20_G51 = Nov20_data |> @filter(_.PostcodePart == "G51") |> DataFrame
+push!(Nov20_spa, (
+        ("G51"),
+        ((count(i -> (i > 0), Nov20_G51.S1_seropositive)) / length(Nov20_G51.S1_seropositive)),
+        ((count(i -> (i > 0), Nov20_G51.RBD_seropositive)) / length(Nov20_G51.RBD_seropositive))))
+        # G52
+Nov20_G52 = Nov20_data |> @filter(_.PostcodePart == "G52") |> DataFrame
+push!(Nov20_spa, (
+        ("G52"),
+        ((count(i -> (i > 0), Nov20_G52.S1_seropositive)) / length(Nov20_G52.S1_seropositive)),
+        ((count(i -> (i > 0), Nov20_G52.RBD_seropositive)) / length(Nov20_G52.RBD_seropositive))))
+        # G53
+Nov20_G53 = Nov20_data |> @filter(_.PostcodePart == "G53") |> DataFrame
+push!(Nov20_spa, (
+        ("G53"),
+        ((count(i -> (i > 0), Nov20_G53.S1_seropositive)) / length(Nov20_G53.S1_seropositive)),
+        ((count(i -> (i > 0), Nov20_G53.RBD_seropositive)) / length(Nov20_G53.RBD_seropositive))))
+        # G58
+Nov20_G58 = Nov20_data |> @filter(_.PostcodePart == "G58") |> DataFrame
+push!(Nov20_spa, (
+        ("G58"),
+        ((count(i -> (i > 0), Nov20_G58.S1_seropositive)) / length(Nov20_G58.S1_seropositive)),
+        ((count(i -> (i > 0), Nov20_G58.RBD_seropositive)) / length(Nov20_G58.RBD_seropositive))))
+        # G60
+Nov20_G60 = Nov20_data |> @filter(_.PostcodePart == "G60") |> DataFrame
+push!(Nov20_spa, (
+        ("G60"),
+        ((count(i -> (i > 0), Nov20_G60.S1_seropositive)) / length(Nov20_G60.S1_seropositive)),
+        ((count(i -> (i > 0), Nov20_G60.RBD_seropositive)) / length(Nov20_G60.RBD_seropositive))))
+        # G61
+Nov20_G61 = Nov20_data |> @filter(_.PostcodePart == "G61") |> DataFrame
+push!(Nov20_spa, (
+        ("G61"),
+        ((count(i -> (i > 0), Nov20_G61.S1_seropositive)) / length(Nov20_G61.S1_seropositive)),
+        ((count(i -> (i > 0), Nov20_G61.RBD_seropositive)) / length(Nov20_G61.RBD_seropositive))))
+        # G62
+Nov20_G62 = Nov20_data |> @filter(_.PostcodePart == "G62") |> DataFrame
+push!(Nov20_spa, (
+        ("G62"),
+        ((count(i -> (i > 0), Nov20_G62.S1_seropositive)) / length(Nov20_G62.S1_seropositive)),
+        ((count(i -> (i > 0), Nov20_G62.RBD_seropositive)) / length(Nov20_G62.RBD_seropositive))))
+        # G63
+Nov20_G63 = Nov20_data |> @filter(_.PostcodePart == "G63") |> DataFrame
+push!(Nov20_spa, (
+        ("G63"),
+        ((count(i -> (i > 0), Nov20_G63.S1_seropositive)) / length(Nov20_G63.S1_seropositive)),
+        ((count(i -> (i > 0), Nov20_G63.RBD_seropositive)) / length(Nov20_G63.RBD_seropositive))))
+        # G64
+Nov20_G64 = Nov20_data |> @filter(_.PostcodePart == "G64") |> DataFrame
+push!(Nov20_spa, (
+        ("G64"),
+        ((count(i -> (i > 0), Nov20_G64.S1_seropositive)) / length(Nov20_G64.S1_seropositive)),
+        ((count(i -> (i > 0), Nov20_G64.RBD_seropositive)) / length(Nov20_G64.RBD_seropositive))))
+        # G65
+Nov20_G65 = Nov20_data |> @filter(_.PostcodePart == "G65") |> DataFrame
+push!(Nov20_spa, (
+        ("G65"),
+        ((count(i -> (i > 0), Nov20_G65.S1_seropositive)) / length(Nov20_G65.S1_seropositive)),
+        ((count(i -> (i > 0), Nov20_G65.RBD_seropositive)) / length(Nov20_G65.RBD_seropositive))))
+        # G66
+Nov20_G66 = Nov20_data |> @filter(_.PostcodePart == "G66") |> DataFrame
+push!(Nov20_spa, (
+        ("G66"),
+        ((count(i -> (i > 0), Nov20_G66.S1_seropositive)) / length(Nov20_G66.S1_seropositive)),
+        ((count(i -> (i > 0), Nov20_G66.RBD_seropositive)) / length(Nov20_G66.RBD_seropositive))))
+        # G67
+Nov20_G67 = Nov20_data |> @filter(_.PostcodePart == "G67") |> DataFrame
+push!(Nov20_spa, (
+        ("G67"),
+        ((count(i -> (i > 0), Nov20_G67.S1_seropositive)) / length(Nov20_G67.S1_seropositive)),
+        ((count(i -> (i > 0), Nov20_G67.RBD_seropositive)) / length(Nov20_G67.RBD_seropositive))))
+        # G68
+Nov20_G68 = Nov20_data |> @filter(_.PostcodePart == "G68") |> DataFrame
+push!(Nov20_spa, (
+        ("G68"),
+        ((count(i -> (i > 0), Nov20_G68.S1_seropositive)) / length(Nov20_G68.S1_seropositive)),
+        ((count(i -> (i > 0), Nov20_G68.RBD_seropositive)) / length(Nov20_G68.RBD_seropositive))))
+        # G69
+Nov20_G69 = Nov20_data |> @filter(_.PostcodePart == "G69") |> DataFrame
+push!(Nov20_spa, (
+        ("G69"),
+        ((count(i -> (i > 0), Nov20_G69.S1_seropositive)) / length(Nov20_G69.S1_seropositive)),
+        ((count(i -> (i > 0), Nov20_G69.RBD_seropositive)) / length(Nov20_G69.RBD_seropositive))))
+        #  G70
+Nov20_G70 = Nov20_data |> @filter(_.PostcodePart == "G70") |> DataFrame
+push!(Nov20_spa, (
+        ("G70"),
+        ((count(i -> (i > 0), Nov20_G70.S1_seropositive)) / length(Nov20_G70.S1_seropositive)),
+        ((count(i -> (i > 0), Nov20_G70.RBD_seropositive)) / length(Nov20_G70.RBD_seropositive))))
+        # G71
+Nov20_G71 = Nov20_data |> @filter(_.PostcodePart == "G71") |> DataFrame
+push!(Nov20_spa, (
+        ("G71"),
+        ((count(i -> (i > 0), Nov20_G71.S1_seropositive)) / length(Nov20_G71.S1_seropositive)),
+        ((count(i -> (i > 0), Nov20_G71.RBD_seropositive)) / length(Nov20_G71.RBD_seropositive))))
+        # G72
+Nov20_G72 = Nov20_data |> @filter(_.PostcodePart == "G72") |> DataFrame
+push!(Nov20_spa, (
+        ("G72"),
+        ((count(i -> (i > 0), Nov20_G72.S1_seropositive)) / length(Nov20_G72.S1_seropositive)),
+        ((count(i -> (i > 0), Nov20_G72.RBD_seropositive)) / length(Nov20_G72.RBD_seropositive))))
+        # G73
+Nov20_G73 = Nov20_data |> @filter(_.PostcodePart == "G73") |> DataFrame
+push!(Nov20_spa, (
+        ("G73"),
+        ((count(i -> (i > 0), Nov20_G73.S1_seropositive)) / length(Nov20_G73.S1_seropositive)),
+        ((count(i -> (i > 0), Nov20_G73.RBD_seropositive)) / length(Nov20_G73.RBD_seropositive))))
+        # G74
+Nov20_G74 = Nov20_data |> @filter(_.PostcodePart == "G74") |> DataFrame
+push!(Nov20_spa, (
+        ("G74"),
+        ((count(i -> (i > 0), Nov20_G74.S1_seropositive)) / length(Nov20_G74.S1_seropositive)),
+        ((count(i -> (i > 0), Nov20_G74.RBD_seropositive)) / length(Nov20_G74.RBD_seropositive))))
+        # G75
+Nov20_G75 = Nov20_data |> @filter(_.PostcodePart == "G75") |> DataFrame
+push!(Nov20_spa, (
+        ("G75"),
+        ((count(i -> (i > 0), Nov20_G75.S1_seropositive)) / length(Nov20_G75.S1_seropositive)),
+        ((count(i -> (i > 0), Nov20_G75.RBD_seropositive)) / length(Nov20_G75.RBD_seropositive))))
+        # G77
+Nov20_G77 = Nov20_data |> @filter(_.PostcodePart == "G77") |> DataFrame
+push!(Nov20_spa, (
+        ("G77"),
+        ((count(i -> (i > 0), Nov20_G77.S1_seropositive)) / length(Nov20_G77.S1_seropositive)),
+        ((count(i -> (i > 0), Nov20_G77.RBD_seropositive)) / length(Nov20_G77.RBD_seropositive))))
+        # G78
+Nov20_G78 = Nov20_data |> @filter(_.PostcodePart == "G78") |> DataFrame
+push!(Nov20_spa, (
+        ("G78"),
+        ((count(i -> (i > 0), Nov20_G78.S1_seropositive)) / length(Nov20_G78.S1_seropositive)),
+        ((count(i -> (i > 0), Nov20_G78.RBD_seropositive)) / length(Nov20_G78.RBD_seropositive))))
+        # G79
+Nov20_G79 = Nov20_data |> @filter(_.PostcodePart == "G79") |> DataFrame
+push!(Nov20_spa, (
+        ("G79"),
+        ((count(i -> (i > 0), Nov20_G79.S1_seropositive)) / length(Nov20_G79.S1_seropositive)),
+        ((count(i -> (i > 0), Nov20_G79.RBD_seropositive)) / length(Nov20_G79.RBD_seropositive))))
+        # G81
+Nov20_G81 = Nov20_data |> @filter(_.PostcodePart == "G81") |> DataFrame
+push!(Nov20_spa, (
+        ("G81"),
+        ((count(i -> (i > 0), Nov20_G81.S1_seropositive)) / length(Nov20_G81.S1_seropositive)),
+        ((count(i -> (i > 0), Nov20_G81.RBD_seropositive)) / length(Nov20_G81.RBD_seropositive))))
+        # G82
+Nov20_G82 = Nov20_data |> @filter(_.PostcodePart == "G82") |> DataFrame
+push!(Nov20_spa, (
+        ("G82"),
+        ((count(i -> (i > 0), Nov20_G82.S1_seropositive)) / length(Nov20_G82.S1_seropositive)),
+        ((count(i -> (i > 0), Nov20_G82.RBD_seropositive)) / length(Nov20_G82.RBD_seropositive))))
+        # G83
+Nov20_G83 = Nov20_data |> @filter(_.PostcodePart == "G83") |> DataFrame
+push!(Nov20_spa, (
+        ("G83"),
+        ((count(i -> (i > 0), Nov20_G83.S1_seropositive)) / length(Nov20_G83.S1_seropositive)),
+        ((count(i -> (i > 0), Nov20_G83.RBD_seropositive)) / length(Nov20_G83.RBD_seropositive))))
+        # G84
+Nov20_G84 = Nov20_data |> @filter(_.PostcodePart == "G84") |> DataFrame
+push!(Nov20_spa, (
+        ("G84"),
+        ((count(i -> (i > 0), Nov20_G84.S1_seropositive)) / length(Nov20_G84.S1_seropositive)),
+        ((count(i -> (i > 0), Nov20_G84.RBD_seropositive)) / length(Nov20_G84.RBD_seropositive))))
+        # G90
+Nov20_G90 = Nov20_data |> @filter(_.PostcodePart == "G90") |> DataFrame
+push!(Nov20_spa, (
+        ("G90"),
+        ((count(i -> (i > 0), Nov20_G90.S1_seropositive)) / length(Nov20_G90.S1_seropositive)),
+        ((count(i -> (i > 0), Nov20_G90.RBD_seropositive)) / length(Nov20_G90.RBD_seropositive))))
+
+Nov20_spa |> CSV.write("./honoursproject/data/by_postcode/November_20_postcode_data.csv")
+
+# June
+Dec20_spa = DataFrame(
+    Postcode=String[],
+    S1=Float64[],
+    RBD=Float64[],
+)
+
+        # G1
+Dec20_G1 = Dec20_data |> @filter(_.PostcodePart == "G1") |> DataFrame
+push!(Dec20_spa, (
+        ("G1"),
+        ((count(i -> (i > 0), Dec20_G1.S1_seropositive)) / length(Dec20_G1.S1_seropositive)),
+        ((count(i -> (i > 0), Dec20_G1.RBD_seropositive)) / length(Dec20_G1.RBD_seropositive))))
+        # G2
+Dec20_G2 = Dec20_data |> @filter(_.PostcodePart == "G2") |> DataFrame
+push!(Dec20_spa, (
+        ("G2"),
+        ((count(i -> (i > 0), Dec20_G2.S1_seropositive)) / length(Dec20_G2.S1_seropositive)),
+        ((count(i -> (i > 0), Dec20_G2.RBD_seropositive)) / length(Dec20_G2.RBD_seropositive))))
+        # G3
+Dec20_G3 = Dec20_data |> @filter(_.PostcodePart == "G3") |> DataFrame
+push!(Dec20_spa, (
+        ("G3"),
+        ((count(i -> (i > 0), Dec20_G3.S1_seropositive)) / length(Dec20_G3.S1_seropositive)),
+        ((count(i -> (i > 0), Dec20_G3.RBD_seropositive)) / length(Dec20_G3.RBD_seropositive))))
+        # G4
+Dec20_G4 = Dec20_data |> @filter(_.PostcodePart == "G4") |> DataFrame
+push!(Dec20_spa, (
+        ("G4"),
+        ((count(i -> (i > 0), Dec20_G4.S1_seropositive)) / length(Dec20_G4.S1_seropositive)),
+        ((count(i -> (i > 0), Dec20_G4.RBD_seropositive)) / length(Dec20_G4.RBD_seropositive))))
+        # G5
+Dec20_G5 = Dec20_data |> @filter(_.PostcodePart == "G5") |> DataFrame
+push!(Dec20_spa, (
+        ("G5"),
+        ((count(i -> (i > 0), Dec20_G5.S1_seropositive)) / length(Dec20_G5.S1_seropositive)),
+        ((count(i -> (i > 0), Dec20_G5.RBD_seropositive)) / length(Dec20_G5.RBD_seropositive))))
+        # G9
+Dec20_G9 = Dec20_data |> @filter(_.PostcodePart == "G9") |> DataFrame
+push!(Dec20_spa, (
+        ("G9"),
+        ((count(i -> (i > 0), Dec20_G9.S1_seropositive)) / length(Dec20_G9.S1_seropositive)),
+        ((count(i -> (i > 0), Dec20_G9.RBD_seropositive)) / length(Dec20_G9.RBD_seropositive))))
+        # G11
+Dec20_G11 = Dec20_data |> @filter(_.PostcodePart == "G11") |> DataFrame
+push!(Dec20_spa, (
+        ("G11"),
+        ((count(i -> (i > 0), Dec20_G11.S1_seropositive)) / length(Dec20_G11.S1_seropositive)),
+        ((count(i -> (i > 0), Dec20_G11.RBD_seropositive)) / length(Dec20_G11.RBD_seropositive))))
+        # G12
+Dec20_G12 = Dec20_data |> @filter(_.PostcodePart == "G12") |> DataFrame
+push!(Dec20_spa, (
+        ("G12"),
+        ((count(i -> (i > 0), Dec20_G12.S1_seropositive)) / length(Dec20_G12.S1_seropositive)),
+        ((count(i -> (i > 0), Dec20_G12.RBD_seropositive)) / length(Dec20_G12.RBD_seropositive))))
+        # G13
+Dec20_G13 = Dec20_data |> @filter(_.PostcodePart == "G13") |> DataFrame
+push!(Dec20_spa, (
+        ("G13"),
+        ((count(i -> (i > 0), Dec20_G13.S1_seropositive)) / length(Dec20_G13.S1_seropositive)),
+        ((count(i -> (i > 0), Dec20_G13.RBD_seropositive)) / length(Dec20_G13.RBD_seropositive))))
+        # G14
+Dec20_G14 = Dec20_data |> @filter(_.PostcodePart == "G14") |> DataFrame
+push!(Dec20_spa, (
+        ("G14"),
+        ((count(i -> (i > 0), Dec20_G14.S1_seropositive)) / length(Dec20_G14.S1_seropositive)),
+        ((count(i -> (i > 0), Dec20_G14.RBD_seropositive)) / length(Dec20_G14.RBD_seropositive))))
+        # G15
+Dec20_G15 = Dec20_data |> @filter(_.PostcodePart == "G15") |> DataFrame
+push!(Dec20_spa, (
+        ("G15"),
+        ((count(i -> (i > 0), Dec20_G15.S1_seropositive)) / length(Dec20_G15.S1_seropositive)),
+        ((count(i -> (i > 0), Dec20_G15.RBD_seropositive)) / length(Dec20_G15.RBD_seropositive))))
+        # G20
+Dec20_G20 = Dec20_data |> @filter(_.PostcodePart == "G20") |> DataFrame
+push!(Dec20_spa, (
+        ("G20"),
+        ((count(i -> (i > 0), Dec20_G20.S1_seropositive)) / length(Dec20_G20.S1_seropositive)),
+        ((count(i -> (i > 0), Dec20_G20.RBD_seropositive)) / length(Dec20_G20.RBD_seropositive))))
+        # G21
+Dec20_G21 = Dec20_data |> @filter(_.PostcodePart == "G21") |> DataFrame
+push!(Dec20_spa, (
+        ("G21"),
+        ((count(i -> (i > 0), Dec20_G21.S1_seropositive)) / length(Dec20_G21.S1_seropositive)),
+        ((count(i -> (i > 0), Dec20_G21.RBD_seropositive)) / length(Dec20_G21.RBD_seropositive))))
+        # G22
+Dec20_G22 = Dec20_data |> @filter(_.PostcodePart == "G22") |> DataFrame
+push!(Dec20_spa, (
+        ("G22"),
+        ((count(i -> (i > 0), Dec20_G22.S1_seropositive)) / length(Dec20_G22.S1_seropositive)),
+        ((count(i -> (i > 0), Dec20_G22.RBD_seropositive)) / length(Dec20_G22.RBD_seropositive))))
+        # G23
+Dec20_G23 = Dec20_data |> @filter(_.PostcodePart == "G23") |> DataFrame
+push!(Dec20_spa, (
+        ("G23"),
+        ((count(i -> (i > 0), Dec20_G23.S1_seropositive)) / length(Dec20_G23.S1_seropositive)),
+        ((count(i -> (i > 0), Dec20_G23.RBD_seropositive)) / length(Dec20_G23.RBD_seropositive))))
+        # G31
+Dec20_G31 = Dec20_data |> @filter(_.PostcodePart == "G31") |> DataFrame
+push!(Dec20_spa, (
+        ("G31"),
+        ((count(i -> (i > 0), Dec20_G31.S1_seropositive)) / length(Dec20_G31.S1_seropositive)),
+        ((count(i -> (i > 0), Dec20_G31.RBD_seropositive)) / length(Dec20_G31.RBD_seropositive))))
+        # G32
+Dec20_G32 = Dec20_data |> @filter(_.PostcodePart == "G32") |> DataFrame
+push!(Dec20_spa, (
+        ("G32"),
+        ((count(i -> (i > 0), Dec20_G32.S1_seropositive)) / length(Dec20_G32.S1_seropositive)),
+        ((count(i -> (i > 0), Dec20_G32.RBD_seropositive)) / length(Dec20_G32.RBD_seropositive))))
+        # G33
+Dec20_G33 = Dec20_data |> @filter(_.PostcodePart == "G33") |> DataFrame
+push!(Dec20_spa, (
+        ("G33"),
+        ((count(i -> (i > 0), Dec20_G33.S1_seropositive)) / length(Dec20_G33.S1_seropositive)),
+        ((count(i -> (i > 0), Dec20_G33.RBD_seropositive)) / length(Dec20_G33.RBD_seropositive))))
+        # G34
+Dec20_G34 = Dec20_data |> @filter(_.PostcodePart == "G34") |> DataFrame
+push!(Dec20_spa, (
+        ("G34"),
+        ((count(i -> (i > 0), Dec20_G34.S1_seropositive)) / length(Dec20_G34.S1_seropositive)),
+        ((count(i -> (i > 0), Dec20_G34.RBD_seropositive)) / length(Dec20_G34.RBD_seropositive))))
+        # G40
+Dec20_G40 = Dec20_data |> @filter(_.PostcodePart == "G40") |> DataFrame
+push!(Dec20_spa, (
+        ("G40"),
+        ((count(i -> (i > 0), Dec20_G40.S1_seropositive)) / length(Dec20_G40.S1_seropositive)),
+        ((count(i -> (i > 0), Dec20_G40.RBD_seropositive)) / length(Dec20_G40.RBD_seropositive))))
+        # G41
+Dec20_G41 = Dec20_data |> @filter(_.PostcodePart == "G41") |> DataFrame
+push!(Dec20_spa, (
+        ("G41"),
+        ((count(i -> (i > 0), Dec20_G41.S1_seropositive)) / length(Dec20_G41.S1_seropositive)),
+        ((count(i -> (i > 0), Dec20_G41.RBD_seropositive)) / length(Dec20_G41.RBD_seropositive))))
+        # G42
+Dec20_G42 = Dec20_data |> @filter(_.PostcodePart == "G42") |> DataFrame
+push!(Dec20_spa, (
+        ("G42"),
+        ((count(i -> (i > 0), Dec20_G42.S1_seropositive)) / length(Dec20_G42.S1_seropositive)),
+        ((count(i -> (i > 0), Dec20_G42.RBD_seropositive)) / length(Dec20_G42.RBD_seropositive))))
+        # G43
+Dec20_G43 = Dec20_data |> @filter(_.PostcodePart == "G43") |> DataFrame
+push!(Dec20_spa, (
+        ("G43"),
+        ((count(i -> (i > 0), Dec20_G43.S1_seropositive)) / length(Dec20_G43.S1_seropositive)),
+        ((count(i -> (i > 0), Dec20_G43.RBD_seropositive)) / length(Dec20_G43.RBD_seropositive))))
+        # G44
+Dec20_G44 = Dec20_data |> @filter(_.PostcodePart == "G44") |> DataFrame
+push!(Dec20_spa, (
+        ("G44"),
+        ((count(i -> (i > 0), Dec20_G44.S1_seropositive)) / length(Dec20_G44.S1_seropositive)),
+        ((count(i -> (i > 0), Dec20_G44.RBD_seropositive)) / length(Dec20_G44.RBD_seropositive))))
+        # G45
+Dec20_G45 = Dec20_data |> @filter(_.PostcodePart == "G45") |> DataFrame
+push!(Dec20_spa, (
+        ("G45"),
+        ((count(i -> (i > 0), Dec20_G45.S1_seropositive)) / length(Dec20_G45.S1_seropositive)),
+        ((count(i -> (i > 0), Dec20_G45.RBD_seropositive)) / length(Dec20_G45.RBD_seropositive))))
+        # G46
+Dec20_G46 = Dec20_data |> @filter(_.PostcodePart == "G46") |> DataFrame
+push!(Dec20_spa, (
+        ("G46"),
+        ((count(i -> (i > 0), Dec20_G46.S1_seropositive)) / length(Dec20_G46.S1_seropositive)),
+        ((count(i -> (i > 0), Dec20_G46.RBD_seropositive)) / length(Dec20_G46.RBD_seropositive))))
+        # G51
+Dec20_G51 = Dec20_data |> @filter(_.PostcodePart == "G51") |> DataFrame
+push!(Dec20_spa, (
+        ("G51"),
+        ((count(i -> (i > 0), Dec20_G51.S1_seropositive)) / length(Dec20_G51.S1_seropositive)),
+        ((count(i -> (i > 0), Dec20_G51.RBD_seropositive)) / length(Dec20_G51.RBD_seropositive))))
+        # G52
+Dec20_G52 = Dec20_data |> @filter(_.PostcodePart == "G52") |> DataFrame
+push!(Dec20_spa, (
+        ("G52"),
+        ((count(i -> (i > 0), Dec20_G52.S1_seropositive)) / length(Dec20_G52.S1_seropositive)),
+        ((count(i -> (i > 0), Dec20_G52.RBD_seropositive)) / length(Dec20_G52.RBD_seropositive))))
+        # G53
+Dec20_G53 = Dec20_data |> @filter(_.PostcodePart == "G53") |> DataFrame
+push!(Dec20_spa, (
+        ("G53"),
+        ((count(i -> (i > 0), Dec20_G53.S1_seropositive)) / length(Dec20_G53.S1_seropositive)),
+        ((count(i -> (i > 0), Dec20_G53.RBD_seropositive)) / length(Dec20_G53.RBD_seropositive))))
+        # G58
+Dec20_G58 = Dec20_data |> @filter(_.PostcodePart == "G58") |> DataFrame
+push!(Dec20_spa, (
+        ("G58"),
+        ((count(i -> (i > 0), Dec20_G58.S1_seropositive)) / length(Dec20_G58.S1_seropositive)),
+        ((count(i -> (i > 0), Dec20_G58.RBD_seropositive)) / length(Dec20_G58.RBD_seropositive))))
+        # G60
+Dec20_G60 = Dec20_data |> @filter(_.PostcodePart == "G60") |> DataFrame
+push!(Dec20_spa, (
+        ("G60"),
+        ((count(i -> (i > 0), Dec20_G60.S1_seropositive)) / length(Dec20_G60.S1_seropositive)),
+        ((count(i -> (i > 0), Dec20_G60.RBD_seropositive)) / length(Dec20_G60.RBD_seropositive))))
+        # G61
+Dec20_G61 = Dec20_data |> @filter(_.PostcodePart == "G61") |> DataFrame
+push!(Dec20_spa, (
+        ("G61"),
+        ((count(i -> (i > 0), Dec20_G61.S1_seropositive)) / length(Dec20_G61.S1_seropositive)),
+        ((count(i -> (i > 0), Dec20_G61.RBD_seropositive)) / length(Dec20_G61.RBD_seropositive))))
+        # G62
+Dec20_G62 = Dec20_data |> @filter(_.PostcodePart == "G62") |> DataFrame
+push!(Dec20_spa, (
+        ("G62"),
+        ((count(i -> (i > 0), Dec20_G62.S1_seropositive)) / length(Dec20_G62.S1_seropositive)),
+        ((count(i -> (i > 0), Dec20_G62.RBD_seropositive)) / length(Dec20_G62.RBD_seropositive))))
+        # G63
+Dec20_G63 = Dec20_data |> @filter(_.PostcodePart == "G63") |> DataFrame
+push!(Dec20_spa, (
+        ("G63"),
+        ((count(i -> (i > 0), Dec20_G63.S1_seropositive)) / length(Dec20_G63.S1_seropositive)),
+        ((count(i -> (i > 0), Dec20_G63.RBD_seropositive)) / length(Dec20_G63.RBD_seropositive))))
+        # G64
+Dec20_G64 = Dec20_data |> @filter(_.PostcodePart == "G64") |> DataFrame
+push!(Dec20_spa, (
+        ("G64"),
+        ((count(i -> (i > 0), Dec20_G64.S1_seropositive)) / length(Dec20_G64.S1_seropositive)),
+        ((count(i -> (i > 0), Dec20_G64.RBD_seropositive)) / length(Dec20_G64.RBD_seropositive))))
+        # G65
+Dec20_G65 = Dec20_data |> @filter(_.PostcodePart == "G65") |> DataFrame
+push!(Dec20_spa, (
+        ("G65"),
+        ((count(i -> (i > 0), Dec20_G65.S1_seropositive)) / length(Dec20_G65.S1_seropositive)),
+        ((count(i -> (i > 0), Dec20_G65.RBD_seropositive)) / length(Dec20_G65.RBD_seropositive))))
+        # G66
+Dec20_G66 = Dec20_data |> @filter(_.PostcodePart == "G66") |> DataFrame
+push!(Dec20_spa, (
+        ("G66"),
+        ((count(i -> (i > 0), Dec20_G66.S1_seropositive)) / length(Dec20_G66.S1_seropositive)),
+        ((count(i -> (i > 0), Dec20_G66.RBD_seropositive)) / length(Dec20_G66.RBD_seropositive))))
+        # G67
+Dec20_G67 = Dec20_data |> @filter(_.PostcodePart == "G67") |> DataFrame
+push!(Dec20_spa, (
+        ("G67"),
+        ((count(i -> (i > 0), Dec20_G67.S1_seropositive)) / length(Dec20_G67.S1_seropositive)),
+        ((count(i -> (i > 0), Dec20_G67.RBD_seropositive)) / length(Dec20_G67.RBD_seropositive))))
+        # G68
+Dec20_G68 = Dec20_data |> @filter(_.PostcodePart == "G68") |> DataFrame
+push!(Dec20_spa, (
+        ("G68"),
+        ((count(i -> (i > 0), Dec20_G68.S1_seropositive)) / length(Dec20_G68.S1_seropositive)),
+        ((count(i -> (i > 0), Dec20_G68.RBD_seropositive)) / length(Dec20_G68.RBD_seropositive))))
+        # G69
+Dec20_G69 = Dec20_data |> @filter(_.PostcodePart == "G69") |> DataFrame
+push!(Dec20_spa, (
+        ("G69"),
+        ((count(i -> (i > 0), Dec20_G69.S1_seropositive)) / length(Dec20_G69.S1_seropositive)),
+        ((count(i -> (i > 0), Dec20_G69.RBD_seropositive)) / length(Dec20_G69.RBD_seropositive))))
+        #  G70
+Dec20_G70 = Dec20_data |> @filter(_.PostcodePart == "G70") |> DataFrame
+push!(Dec20_spa, (
+        ("G70"),
+        ((count(i -> (i > 0), Dec20_G70.S1_seropositive)) / length(Dec20_G70.S1_seropositive)),
+        ((count(i -> (i > 0), Dec20_G70.RBD_seropositive)) / length(Dec20_G70.RBD_seropositive))))
+        # G71
+Dec20_G71 = Dec20_data |> @filter(_.PostcodePart == "G71") |> DataFrame
+push!(Dec20_spa, (
+        ("G71"),
+        ((count(i -> (i > 0), Dec20_G71.S1_seropositive)) / length(Dec20_G71.S1_seropositive)),
+        ((count(i -> (i > 0), Dec20_G71.RBD_seropositive)) / length(Dec20_G71.RBD_seropositive))))
+        # G72
+Dec20_G72 = Dec20_data |> @filter(_.PostcodePart == "G72") |> DataFrame
+push!(Dec20_spa, (
+        ("G72"),
+        ((count(i -> (i > 0), Dec20_G72.S1_seropositive)) / length(Dec20_G72.S1_seropositive)),
+        ((count(i -> (i > 0), Dec20_G72.RBD_seropositive)) / length(Dec20_G72.RBD_seropositive))))
+        # G73
+Dec20_G73 = Dec20_data |> @filter(_.PostcodePart == "G73") |> DataFrame
+push!(Dec20_spa, (
+        ("G73"),
+        ((count(i -> (i > 0), Dec20_G73.S1_seropositive)) / length(Dec20_G73.S1_seropositive)),
+        ((count(i -> (i > 0), Dec20_G73.RBD_seropositive)) / length(Dec20_G73.RBD_seropositive))))
+        # G74
+Dec20_G74 = Dec20_data |> @filter(_.PostcodePart == "G74") |> DataFrame
+push!(Dec20_spa, (
+        ("G74"),
+        ((count(i -> (i > 0), Dec20_G74.S1_seropositive)) / length(Dec20_G74.S1_seropositive)),
+        ((count(i -> (i > 0), Dec20_G74.RBD_seropositive)) / length(Dec20_G74.RBD_seropositive))))
+        # G75
+Dec20_G75 = Dec20_data |> @filter(_.PostcodePart == "G75") |> DataFrame
+push!(Dec20_spa, (
+        ("G75"),
+        ((count(i -> (i > 0), Dec20_G75.S1_seropositive)) / length(Dec20_G75.S1_seropositive)),
+        ((count(i -> (i > 0), Dec20_G75.RBD_seropositive)) / length(Dec20_G75.RBD_seropositive))))
+        # G77
+Dec20_G77 = Dec20_data |> @filter(_.PostcodePart == "G77") |> DataFrame
+push!(Dec20_spa, (
+        ("G77"),
+        ((count(i -> (i > 0), Dec20_G77.S1_seropositive)) / length(Dec20_G77.S1_seropositive)),
+        ((count(i -> (i > 0), Dec20_G77.RBD_seropositive)) / length(Dec20_G77.RBD_seropositive))))
+        # G78
+Dec20_G78 = Dec20_data |> @filter(_.PostcodePart == "G78") |> DataFrame
+push!(Dec20_spa, (
+        ("G78"),
+        ((count(i -> (i > 0), Dec20_G78.S1_seropositive)) / length(Dec20_G78.S1_seropositive)),
+        ((count(i -> (i > 0), Dec20_G78.RBD_seropositive)) / length(Dec20_G78.RBD_seropositive))))
+        # G79
+Dec20_G79 = Dec20_data |> @filter(_.PostcodePart == "G79") |> DataFrame
+push!(Dec20_spa, (
+        ("G79"),
+        ((count(i -> (i > 0), Dec20_G79.S1_seropositive)) / length(Dec20_G79.S1_seropositive)),
+        ((count(i -> (i > 0), Dec20_G79.RBD_seropositive)) / length(Dec20_G79.RBD_seropositive))))
+        # G81
+Dec20_G81 = Dec20_data |> @filter(_.PostcodePart == "G81") |> DataFrame
+push!(Dec20_spa, (
+        ("G81"),
+        ((count(i -> (i > 0), Dec20_G81.S1_seropositive)) / length(Dec20_G81.S1_seropositive)),
+        ((count(i -> (i > 0), Dec20_G81.RBD_seropositive)) / length(Dec20_G81.RBD_seropositive))))
+        # G82
+Dec20_G82 = Dec20_data |> @filter(_.PostcodePart == "G82") |> DataFrame
+push!(Dec20_spa, (
+        ("G82"),
+        ((count(i -> (i > 0), Dec20_G82.S1_seropositive)) / length(Dec20_G82.S1_seropositive)),
+        ((count(i -> (i > 0), Dec20_G82.RBD_seropositive)) / length(Dec20_G82.RBD_seropositive))))
+        # G83
+Dec20_G83 = Dec20_data |> @filter(_.PostcodePart == "G83") |> DataFrame
+push!(Dec20_spa, (
+        ("G83"),
+        ((count(i -> (i > 0), Dec20_G83.S1_seropositive)) / length(Dec20_G83.S1_seropositive)),
+        ((count(i -> (i > 0), Dec20_G83.RBD_seropositive)) / length(Dec20_G83.RBD_seropositive))))
+        # G84
+Dec20_G84 = Dec20_data |> @filter(_.PostcodePart == "G84") |> DataFrame
+push!(Dec20_spa, (
+        ("G84"),
+        ((count(i -> (i > 0), Dec20_G84.S1_seropositive)) / length(Dec20_G84.S1_seropositive)),
+        ((count(i -> (i > 0), Dec20_G84.RBD_seropositive)) / length(Dec20_G84.RBD_seropositive))))
+        # G90
+Dec20_G90 = Dec20_data |> @filter(_.PostcodePart == "G90") |> DataFrame
+push!(Dec20_spa, (
+        ("G90"),
+        ((count(i -> (i > 0), Dec20_G90.S1_seropositive)) / length(Dec20_G90.S1_seropositive)),
+        ((count(i -> (i > 0), Dec20_G90.RBD_seropositive)) / length(Dec20_G90.RBD_seropositive))))
+
+Dec20_spa |> CSV.write("./honoursproject/data/by_postcode/December_20_postcode_data.csv")
+
+# June
+Jan21_spa = DataFrame(
+    Postcode=String[],
+    S1=Float64[],
+    RBD=Float64[],
+)
+
+        # G1
+Jan21_G1 = Jan21_data |> @filter(_.PostcodePart == "G1") |> DataFrame
+push!(Jan21_spa, (
+        ("G1"),
+        ((count(i -> (i > 0), Jan21_G1.S1_seropositive)) / length(Jan21_G1.S1_seropositive)),
+        ((count(i -> (i > 0), Jan21_G1.RBD_seropositive)) / length(Jan21_G1.RBD_seropositive))))
+        # G2
+Jan21_G2 = Jan21_data |> @filter(_.PostcodePart == "G2") |> DataFrame
+push!(Jan21_spa, (
+        ("G2"),
+        ((count(i -> (i > 0), Jan21_G2.S1_seropositive)) / length(Jan21_G2.S1_seropositive)),
+        ((count(i -> (i > 0), Jan21_G2.RBD_seropositive)) / length(Jan21_G2.RBD_seropositive))))
+        # G3
+Jan21_G3 = Jan21_data |> @filter(_.PostcodePart == "G3") |> DataFrame
+push!(Jan21_spa, (
+        ("G3"),
+        ((count(i -> (i > 0), Jan21_G3.S1_seropositive)) / length(Jan21_G3.S1_seropositive)),
+        ((count(i -> (i > 0), Jan21_G3.RBD_seropositive)) / length(Jan21_G3.RBD_seropositive))))
+        # G4
+Jan21_G4 = Jan21_data |> @filter(_.PostcodePart == "G4") |> DataFrame
+push!(Jan21_spa, (
+        ("G4"),
+        ((count(i -> (i > 0), Jan21_G4.S1_seropositive)) / length(Jan21_G4.S1_seropositive)),
+        ((count(i -> (i > 0), Jan21_G4.RBD_seropositive)) / length(Jan21_G4.RBD_seropositive))))
+        # G5
+Jan21_G5 = Jan21_data |> @filter(_.PostcodePart == "G5") |> DataFrame
+push!(Jan21_spa, (
+        ("G5"),
+        ((count(i -> (i > 0), Jan21_G5.S1_seropositive)) / length(Jan21_G5.S1_seropositive)),
+        ((count(i -> (i > 0), Jan21_G5.RBD_seropositive)) / length(Jan21_G5.RBD_seropositive))))
+        # G9
+Jan21_G9 = Jan21_data |> @filter(_.PostcodePart == "G9") |> DataFrame
+push!(Jan21_spa, (
+        ("G9"),
+        ((count(i -> (i > 0), Jan21_G9.S1_seropositive)) / length(Jan21_G9.S1_seropositive)),
+        ((count(i -> (i > 0), Jan21_G9.RBD_seropositive)) / length(Jan21_G9.RBD_seropositive))))
+        # G11
+Jan21_G11 = Jan21_data |> @filter(_.PostcodePart == "G11") |> DataFrame
+push!(Jan21_spa, (
+        ("G11"),
+        ((count(i -> (i > 0), Jan21_G11.S1_seropositive)) / length(Jan21_G11.S1_seropositive)),
+        ((count(i -> (i > 0), Jan21_G11.RBD_seropositive)) / length(Jan21_G11.RBD_seropositive))))
+        # G12
+Jan21_G12 = Jan21_data |> @filter(_.PostcodePart == "G12") |> DataFrame
+push!(Jan21_spa, (
+        ("G12"),
+        ((count(i -> (i > 0), Jan21_G12.S1_seropositive)) / length(Jan21_G12.S1_seropositive)),
+        ((count(i -> (i > 0), Jan21_G12.RBD_seropositive)) / length(Jan21_G12.RBD_seropositive))))
+        # G13
+Jan21_G13 = Jan21_data |> @filter(_.PostcodePart == "G13") |> DataFrame
+push!(Jan21_spa, (
+        ("G13"),
+        ((count(i -> (i > 0), Jan21_G13.S1_seropositive)) / length(Jan21_G13.S1_seropositive)),
+        ((count(i -> (i > 0), Jan21_G13.RBD_seropositive)) / length(Jan21_G13.RBD_seropositive))))
+        # G14
+Jan21_G14 = Jan21_data |> @filter(_.PostcodePart == "G14") |> DataFrame
+push!(Jan21_spa, (
+        ("G14"),
+        ((count(i -> (i > 0), Jan21_G14.S1_seropositive)) / length(Jan21_G14.S1_seropositive)),
+        ((count(i -> (i > 0), Jan21_G14.RBD_seropositive)) / length(Jan21_G14.RBD_seropositive))))
+        # G15
+Jan21_G15 = Jan21_data |> @filter(_.PostcodePart == "G15") |> DataFrame
+push!(Jan21_spa, (
+        ("G15"),
+        ((count(i -> (i > 0), Jan21_G15.S1_seropositive)) / length(Jan21_G15.S1_seropositive)),
+        ((count(i -> (i > 0), Jan21_G15.RBD_seropositive)) / length(Jan21_G15.RBD_seropositive))))
+        # G20
+Jan21_G20 = Jan21_data |> @filter(_.PostcodePart == "G20") |> DataFrame
+push!(Jan21_spa, (
+        ("G20"),
+        ((count(i -> (i > 0), Jan21_G20.S1_seropositive)) / length(Jan21_G20.S1_seropositive)),
+        ((count(i -> (i > 0), Jan21_G20.RBD_seropositive)) / length(Jan21_G20.RBD_seropositive))))
+        # G21
+Jan21_G21 = Jan21_data |> @filter(_.PostcodePart == "G21") |> DataFrame
+push!(Jan21_spa, (
+        ("G21"),
+        ((count(i -> (i > 0), Jan21_G21.S1_seropositive)) / length(Jan21_G21.S1_seropositive)),
+        ((count(i -> (i > 0), Jan21_G21.RBD_seropositive)) / length(Jan21_G21.RBD_seropositive))))
+        # G22
+Jan21_G22 = Jan21_data |> @filter(_.PostcodePart == "G22") |> DataFrame
+push!(Jan21_spa, (
+        ("G22"),
+        ((count(i -> (i > 0), Jan21_G22.S1_seropositive)) / length(Jan21_G22.S1_seropositive)),
+        ((count(i -> (i > 0), Jan21_G22.RBD_seropositive)) / length(Jan21_G22.RBD_seropositive))))
+        # G23
+Jan21_G23 = Jan21_data |> @filter(_.PostcodePart == "G23") |> DataFrame
+push!(Jan21_spa, (
+        ("G23"),
+        ((count(i -> (i > 0), Jan21_G23.S1_seropositive)) / length(Jan21_G23.S1_seropositive)),
+        ((count(i -> (i > 0), Jan21_G23.RBD_seropositive)) / length(Jan21_G23.RBD_seropositive))))
+        # G31
+Jan21_G31 = Jan21_data |> @filter(_.PostcodePart == "G31") |> DataFrame
+push!(Jan21_spa, (
+        ("G31"),
+        ((count(i -> (i > 0), Jan21_G31.S1_seropositive)) / length(Jan21_G31.S1_seropositive)),
+        ((count(i -> (i > 0), Jan21_G31.RBD_seropositive)) / length(Jan21_G31.RBD_seropositive))))
+        # G32
+Jan21_G32 = Jan21_data |> @filter(_.PostcodePart == "G32") |> DataFrame
+push!(Jan21_spa, (
+        ("G32"),
+        ((count(i -> (i > 0), Jan21_G32.S1_seropositive)) / length(Jan21_G32.S1_seropositive)),
+        ((count(i -> (i > 0), Jan21_G32.RBD_seropositive)) / length(Jan21_G32.RBD_seropositive))))
+        # G33
+Jan21_G33 = Jan21_data |> @filter(_.PostcodePart == "G33") |> DataFrame
+push!(Jan21_spa, (
+        ("G33"),
+        ((count(i -> (i > 0), Jan21_G33.S1_seropositive)) / length(Jan21_G33.S1_seropositive)),
+        ((count(i -> (i > 0), Jan21_G33.RBD_seropositive)) / length(Jan21_G33.RBD_seropositive))))
+        # G34
+Jan21_G34 = Jan21_data |> @filter(_.PostcodePart == "G34") |> DataFrame
+push!(Jan21_spa, (
+        ("G34"),
+        ((count(i -> (i > 0), Jan21_G34.S1_seropositive)) / length(Jan21_G34.S1_seropositive)),
+        ((count(i -> (i > 0), Jan21_G34.RBD_seropositive)) / length(Jan21_G34.RBD_seropositive))))
+        # G40
+Jan21_G40 = Jan21_data |> @filter(_.PostcodePart == "G40") |> DataFrame
+push!(Jan21_spa, (
+        ("G40"),
+        ((count(i -> (i > 0), Jan21_G40.S1_seropositive)) / length(Jan21_G40.S1_seropositive)),
+        ((count(i -> (i > 0), Jan21_G40.RBD_seropositive)) / length(Jan21_G40.RBD_seropositive))))
+        # G41
+Jan21_G41 = Jan21_data |> @filter(_.PostcodePart == "G41") |> DataFrame
+push!(Jan21_spa, (
+        ("G41"),
+        ((count(i -> (i > 0), Jan21_G41.S1_seropositive)) / length(Jan21_G41.S1_seropositive)),
+        ((count(i -> (i > 0), Jan21_G41.RBD_seropositive)) / length(Jan21_G41.RBD_seropositive))))
+        # G42
+Jan21_G42 = Jan21_data |> @filter(_.PostcodePart == "G42") |> DataFrame
+push!(Jan21_spa, (
+        ("G42"),
+        ((count(i -> (i > 0), Jan21_G42.S1_seropositive)) / length(Jan21_G42.S1_seropositive)),
+        ((count(i -> (i > 0), Jan21_G42.RBD_seropositive)) / length(Jan21_G42.RBD_seropositive))))
+        # G43
+Jan21_G43 = Jan21_data |> @filter(_.PostcodePart == "G43") |> DataFrame
+push!(Jan21_spa, (
+        ("G43"),
+        ((count(i -> (i > 0), Jan21_G43.S1_seropositive)) / length(Jan21_G43.S1_seropositive)),
+        ((count(i -> (i > 0), Jan21_G43.RBD_seropositive)) / length(Jan21_G43.RBD_seropositive))))
+        # G44
+Jan21_G44 = Jan21_data |> @filter(_.PostcodePart == "G44") |> DataFrame
+push!(Jan21_spa, (
+        ("G44"),
+        ((count(i -> (i > 0), Jan21_G44.S1_seropositive)) / length(Jan21_G44.S1_seropositive)),
+        ((count(i -> (i > 0), Jan21_G44.RBD_seropositive)) / length(Jan21_G44.RBD_seropositive))))
+        # G45
+Jan21_G45 = Jan21_data |> @filter(_.PostcodePart == "G45") |> DataFrame
+push!(Jan21_spa, (
+        ("G45"),
+        ((count(i -> (i > 0), Jan21_G45.S1_seropositive)) / length(Jan21_G45.S1_seropositive)),
+        ((count(i -> (i > 0), Jan21_G45.RBD_seropositive)) / length(Jan21_G45.RBD_seropositive))))
+        # G46
+Jan21_G46 = Jan21_data |> @filter(_.PostcodePart == "G46") |> DataFrame
+push!(Jan21_spa, (
+        ("G46"),
+        ((count(i -> (i > 0), Jan21_G46.S1_seropositive)) / length(Jan21_G46.S1_seropositive)),
+        ((count(i -> (i > 0), Jan21_G46.RBD_seropositive)) / length(Jan21_G46.RBD_seropositive))))
+        # G51
+Jan21_G51 = Jan21_data |> @filter(_.PostcodePart == "G51") |> DataFrame
+push!(Jan21_spa, (
+        ("G51"),
+        ((count(i -> (i > 0), Jan21_G51.S1_seropositive)) / length(Jan21_G51.S1_seropositive)),
+        ((count(i -> (i > 0), Jan21_G51.RBD_seropositive)) / length(Jan21_G51.RBD_seropositive))))
+        # G52
+Jan21_G52 = Jan21_data |> @filter(_.PostcodePart == "G52") |> DataFrame
+push!(Jan21_spa, (
+        ("G52"),
+        ((count(i -> (i > 0), Jan21_G52.S1_seropositive)) / length(Jan21_G52.S1_seropositive)),
+        ((count(i -> (i > 0), Jan21_G52.RBD_seropositive)) / length(Jan21_G52.RBD_seropositive))))
+        # G53
+Jan21_G53 = Jan21_data |> @filter(_.PostcodePart == "G53") |> DataFrame
+push!(Jan21_spa, (
+        ("G53"),
+        ((count(i -> (i > 0), Jan21_G53.S1_seropositive)) / length(Jan21_G53.S1_seropositive)),
+        ((count(i -> (i > 0), Jan21_G53.RBD_seropositive)) / length(Jan21_G53.RBD_seropositive))))
+        # G58
+Jan21_G58 = Jan21_data |> @filter(_.PostcodePart == "G58") |> DataFrame
+push!(Jan21_spa, (
+        ("G58"),
+        ((count(i -> (i > 0), Jan21_G58.S1_seropositive)) / length(Jan21_G58.S1_seropositive)),
+        ((count(i -> (i > 0), Jan21_G58.RBD_seropositive)) / length(Jan21_G58.RBD_seropositive))))
+        # G60
+Jan21_G60 = Jan21_data |> @filter(_.PostcodePart == "G60") |> DataFrame
+push!(Jan21_spa, (
+        ("G60"),
+        ((count(i -> (i > 0), Jan21_G60.S1_seropositive)) / length(Jan21_G60.S1_seropositive)),
+        ((count(i -> (i > 0), Jan21_G60.RBD_seropositive)) / length(Jan21_G60.RBD_seropositive))))
+        # G61
+Jan21_G61 = Jan21_data |> @filter(_.PostcodePart == "G61") |> DataFrame
+push!(Jan21_spa, (
+        ("G61"),
+        ((count(i -> (i > 0), Jan21_G61.S1_seropositive)) / length(Jan21_G61.S1_seropositive)),
+        ((count(i -> (i > 0), Jan21_G61.RBD_seropositive)) / length(Jan21_G61.RBD_seropositive))))
+        # G62
+Jan21_G62 = Jan21_data |> @filter(_.PostcodePart == "G62") |> DataFrame
+push!(Jan21_spa, (
+        ("G62"),
+        ((count(i -> (i > 0), Jan21_G62.S1_seropositive)) / length(Jan21_G62.S1_seropositive)),
+        ((count(i -> (i > 0), Jan21_G62.RBD_seropositive)) / length(Jan21_G62.RBD_seropositive))))
+        # G63
+Jan21_G63 = Jan21_data |> @filter(_.PostcodePart == "G63") |> DataFrame
+push!(Jan21_spa, (
+        ("G63"),
+        ((count(i -> (i > 0), Jan21_G63.S1_seropositive)) / length(Jan21_G63.S1_seropositive)),
+        ((count(i -> (i > 0), Jan21_G63.RBD_seropositive)) / length(Jan21_G63.RBD_seropositive))))
+        # G64
+Jan21_G64 = Jan21_data |> @filter(_.PostcodePart == "G64") |> DataFrame
+push!(Jan21_spa, (
+        ("G64"),
+        ((count(i -> (i > 0), Jan21_G64.S1_seropositive)) / length(Jan21_G64.S1_seropositive)),
+        ((count(i -> (i > 0), Jan21_G64.RBD_seropositive)) / length(Jan21_G64.RBD_seropositive))))
+        # G65
+Jan21_G65 = Jan21_data |> @filter(_.PostcodePart == "G65") |> DataFrame
+push!(Jan21_spa, (
+        ("G65"),
+        ((count(i -> (i > 0), Jan21_G65.S1_seropositive)) / length(Jan21_G65.S1_seropositive)),
+        ((count(i -> (i > 0), Jan21_G65.RBD_seropositive)) / length(Jan21_G65.RBD_seropositive))))
+        # G66
+Jan21_G66 = Jan21_data |> @filter(_.PostcodePart == "G66") |> DataFrame
+push!(Jan21_spa, (
+        ("G66"),
+        ((count(i -> (i > 0), Jan21_G66.S1_seropositive)) / length(Jan21_G66.S1_seropositive)),
+        ((count(i -> (i > 0), Jan21_G66.RBD_seropositive)) / length(Jan21_G66.RBD_seropositive))))
+        # G67
+Jan21_G67 = Jan21_data |> @filter(_.PostcodePart == "G67") |> DataFrame
+push!(Jan21_spa, (
+        ("G67"),
+        ((count(i -> (i > 0), Jan21_G67.S1_seropositive)) / length(Jan21_G67.S1_seropositive)),
+        ((count(i -> (i > 0), Jan21_G67.RBD_seropositive)) / length(Jan21_G67.RBD_seropositive))))
+        # G68
+Jan21_G68 = Jan21_data |> @filter(_.PostcodePart == "G68") |> DataFrame
+push!(Jan21_spa, (
+        ("G68"),
+        ((count(i -> (i > 0), Jan21_G68.S1_seropositive)) / length(Jan21_G68.S1_seropositive)),
+        ((count(i -> (i > 0), Jan21_G68.RBD_seropositive)) / length(Jan21_G68.RBD_seropositive))))
+        # G69
+Jan21_G69 = Jan21_data |> @filter(_.PostcodePart == "G69") |> DataFrame
+push!(Jan21_spa, (
+        ("G69"),
+        ((count(i -> (i > 0), Jan21_G69.S1_seropositive)) / length(Jan21_G69.S1_seropositive)),
+        ((count(i -> (i > 0), Jan21_G69.RBD_seropositive)) / length(Jan21_G69.RBD_seropositive))))
+        #  G70
+Jan21_G70 = Jan21_data |> @filter(_.PostcodePart == "G70") |> DataFrame
+push!(Jan21_spa, (
+        ("G70"),
+        ((count(i -> (i > 0), Jan21_G70.S1_seropositive)) / length(Jan21_G70.S1_seropositive)),
+        ((count(i -> (i > 0), Jan21_G70.RBD_seropositive)) / length(Jan21_G70.RBD_seropositive))))
+        # G71
+Jan21_G71 = Jan21_data |> @filter(_.PostcodePart == "G71") |> DataFrame
+push!(Jan21_spa, (
+        ("G71"),
+        ((count(i -> (i > 0), Jan21_G71.S1_seropositive)) / length(Jan21_G71.S1_seropositive)),
+        ((count(i -> (i > 0), Jan21_G71.RBD_seropositive)) / length(Jan21_G71.RBD_seropositive))))
+        # G72
+Jan21_G72 = Jan21_data |> @filter(_.PostcodePart == "G72") |> DataFrame
+push!(Jan21_spa, (
+        ("G72"),
+        ((count(i -> (i > 0), Jan21_G72.S1_seropositive)) / length(Jan21_G72.S1_seropositive)),
+        ((count(i -> (i > 0), Jan21_G72.RBD_seropositive)) / length(Jan21_G72.RBD_seropositive))))
+        # G73
+Jan21_G73 = Jan21_data |> @filter(_.PostcodePart == "G73") |> DataFrame
+push!(Jan21_spa, (
+        ("G73"),
+        ((count(i -> (i > 0), Jan21_G73.S1_seropositive)) / length(Jan21_G73.S1_seropositive)),
+        ((count(i -> (i > 0), Jan21_G73.RBD_seropositive)) / length(Jan21_G73.RBD_seropositive))))
+        # G74
+Jan21_G74 = Jan21_data |> @filter(_.PostcodePart == "G74") |> DataFrame
+push!(Jan21_spa, (
+        ("G74"),
+        ((count(i -> (i > 0), Jan21_G74.S1_seropositive)) / length(Jan21_G74.S1_seropositive)),
+        ((count(i -> (i > 0), Jan21_G74.RBD_seropositive)) / length(Jan21_G74.RBD_seropositive))))
+        # G75
+Jan21_G75 = Jan21_data |> @filter(_.PostcodePart == "G75") |> DataFrame
+push!(Jan21_spa, (
+        ("G75"),
+        ((count(i -> (i > 0), Jan21_G75.S1_seropositive)) / length(Jan21_G75.S1_seropositive)),
+        ((count(i -> (i > 0), Jan21_G75.RBD_seropositive)) / length(Jan21_G75.RBD_seropositive))))
+        # G77
+Jan21_G77 = Jan21_data |> @filter(_.PostcodePart == "G77") |> DataFrame
+push!(Jan21_spa, (
+        ("G77"),
+        ((count(i -> (i > 0), Jan21_G77.S1_seropositive)) / length(Jan21_G77.S1_seropositive)),
+        ((count(i -> (i > 0), Jan21_G77.RBD_seropositive)) / length(Jan21_G77.RBD_seropositive))))
+        # G78
+Jan21_G78 = Jan21_data |> @filter(_.PostcodePart == "G78") |> DataFrame
+push!(Jan21_spa, (
+        ("G78"),
+        ((count(i -> (i > 0), Jan21_G78.S1_seropositive)) / length(Jan21_G78.S1_seropositive)),
+        ((count(i -> (i > 0), Jan21_G78.RBD_seropositive)) / length(Jan21_G78.RBD_seropositive))))
+        # G79
+Jan21_G79 = Jan21_data |> @filter(_.PostcodePart == "G79") |> DataFrame
+push!(Jan21_spa, (
+        ("G79"),
+        ((count(i -> (i > 0), Jan21_G79.S1_seropositive)) / length(Jan21_G79.S1_seropositive)),
+        ((count(i -> (i > 0), Jan21_G79.RBD_seropositive)) / length(Jan21_G79.RBD_seropositive))))
+        # G81
+Jan21_G81 = Jan21_data |> @filter(_.PostcodePart == "G81") |> DataFrame
+push!(Jan21_spa, (
+        ("G81"),
+        ((count(i -> (i > 0), Jan21_G81.S1_seropositive)) / length(Jan21_G81.S1_seropositive)),
+        ((count(i -> (i > 0), Jan21_G81.RBD_seropositive)) / length(Jan21_G81.RBD_seropositive))))
+        # G82
+Jan21_G82 = Jan21_data |> @filter(_.PostcodePart == "G82") |> DataFrame
+push!(Jan21_spa, (
+        ("G82"),
+        ((count(i -> (i > 0), Jan21_G82.S1_seropositive)) / length(Jan21_G82.S1_seropositive)),
+        ((count(i -> (i > 0), Jan21_G82.RBD_seropositive)) / length(Jan21_G82.RBD_seropositive))))
+        # G83
+Jan21_G83 = Jan21_data |> @filter(_.PostcodePart == "G83") |> DataFrame
+push!(Jan21_spa, (
+        ("G83"),
+        ((count(i -> (i > 0), Jan21_G83.S1_seropositive)) / length(Jan21_G83.S1_seropositive)),
+        ((count(i -> (i > 0), Jan21_G83.RBD_seropositive)) / length(Jan21_G83.RBD_seropositive))))
+        # G84
+Jan21_G84 = Jan21_data |> @filter(_.PostcodePart == "G84") |> DataFrame
+push!(Jan21_spa, (
+        ("G84"),
+        ((count(i -> (i > 0), Jan21_G84.S1_seropositive)) / length(Jan21_G84.S1_seropositive)),
+        ((count(i -> (i > 0), Jan21_G84.RBD_seropositive)) / length(Jan21_G84.RBD_seropositive))))
+        # G90
+Jan21_G90 = Jan21_data |> @filter(_.PostcodePart == "G90") |> DataFrame
+push!(Jan21_spa, (
+        ("G90"),
+        ((count(i -> (i > 0), Jan21_G90.S1_seropositive)) / length(Jan21_G90.S1_seropositive)),
+        ((count(i -> (i > 0), Jan21_G90.RBD_seropositive)) / length(Jan21_G90.RBD_seropositive))))
+
+Jan21_spa |> CSV.write("./honoursproject/data/by_postcode/January_21_postcode_data.csv")

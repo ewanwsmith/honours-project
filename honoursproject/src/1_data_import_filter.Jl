@@ -3,7 +3,6 @@ using CategoricalArrays
 using CSV
 using StatsBase
 using Dates
-using Gadfly
 
 # import ELISA data
 raw_ELISA_data = DataFrame(CSV.File("./honoursproject/data/S1_RBD_ELISAs.csv"; missingstring="NA", pool=true))
@@ -25,14 +24,14 @@ data.SampleWeek = (broadcast(Dates.firstdayofweek, data.SampleDate))
 data.SampleMonth = (broadcast(Dates.firstdayofmonth, data.SampleDate))
 
 # filter into months
-March2020_data = data |> @filter(_.SampleMonth == Date("2020-03-01")) |> DataFrame
-April2020_data = data |> @filter(_.SampleMonth == Date("2020-04-01")) |> DataFrame
-May2020_data = data |> @filter(_.SampleMonth == Date("2020-05-01")) |> DataFrame
-June2020_data = data |> @filter(_.SampleMonth == Date("2020-06-01")) |> DataFrame
-July2020_data = data |> @filter(_.SampleMonth == Date("2020-07-01")) |> DataFrame
-August2020_data = data |> @filter(_.SampleMonth == Date("2020-08-01")) |> DataFrame
-September2020_data = data |> @filter(_.SampleMonth == Date("2020-09-01")) |> DataFrame
-October2020_data = data |> @filter(_.SampleMonth == Date("2020-10-01")) |> DataFrame
-November2020_data = data |> @filter(_.SampleMonth == Date("2020-11-01")) |> DataFrame
-December2020_data = data |> @filter(_.SampleMonth == Date("2020-12-01")) |> DataFrame
-January2021_data = data |> @filter(_.SampleMonth == Date("2021-01-01")) |> DataFrame
+Mar20_data = data |> @filter(_.SampleMonth == Date("2020-03-01")) |> DataFrame
+Apr20_data = data |> @filter(_.SampleMonth == Date("2020-04-01")) |> DataFrame
+May20_data = data |> @filter(_.SampleMonth == Date("2020-05-01")) |> DataFrame
+Jun20_data = data |> @filter(_.SampleMonth == Date("2020-06-01")) |> DataFrame
+Jul20_data = data |> @filter(_.SampleMonth == Date("2020-07-01")) |> DataFrame
+Aug20_data = data |> @filter(_.SampleMonth == Date("2020-08-01")) |> DataFrame
+Sep20_data = data |> @filter(_.SampleMonth == Date("2020-09-01")) |> DataFrame
+Oct20_data = data |> @filter(_.SampleMonth == Date("2020-10-01")) |> DataFrame
+Nov20_data = data |> @filter(_.SampleMonth == Date("2020-11-01")) |> DataFrame
+Dec20_data = data |> @filter(_.SampleMonth == Date("2020-12-01")) |> DataFrame
+Jan21_data = data |> @filter(_.SampleMonth == Date("2021-01-01")) |> DataFrame

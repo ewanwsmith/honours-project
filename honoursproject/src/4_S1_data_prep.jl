@@ -2260,7 +2260,7 @@ S1_data._2021_01_04 = [
         count(i -> (i > 0), subset(week44, :PostcodePart => x -> x .== "G82").S1_seropositive),
         count(i -> (i > 0), subset(week44, :PostcodePart => x -> x .== "G83").S1_seropositive),
         count(i -> (i > 0), subset(week44, :PostcodePart => x -> x .== "G84").S1_seropositive)]
-week45 = data |> @filter(_.DaysSince < (Date("2020-01-11") - firstdate)) |> DataFrame
+week45 = data |> @filter(_.DaysSince < (Date("2021-01-11") - firstdate)) |> DataFrame
 S1_data._2021_01_11 = [
         count(i -> (i > 0), subset(week45, :PostcodePart => x -> x .== "G1").S1_seropositive),
         count(i -> (i > 0), subset(week45, :PostcodePart => x -> x .== "G2").S1_seropositive),

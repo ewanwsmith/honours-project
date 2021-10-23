@@ -22,6 +22,8 @@ RBD_prop=Float64[],
 
 # weekly data
 week1 = data |> @filter(_.DaysSince < (Date("2020-03-16") - firstdate)) |> DataFrame
+week46 = data |> @filter(_.DaysSince < (Date("2021-01-18") - firstdate)) |> DataFrame    
+
 push!(c_data, (("2020-03-16"),
     (count(i -> (i > 0), week1.S1_seropositive)),
     ((count(i -> (i > 0), week1.S1_seropositive)) / length(week46.S1_seropositive)),
@@ -329,7 +331,6 @@ push!(c_data, (("2021-01-11"),
     (count(i -> (i > 0), week45.RBD_seropositive)),
     ((count(i -> (i > 0), week45.RBD_seropositive)) / length(week46.RBD_seropositive)),
     ))
-week46 = data |> @filter(_.DaysSince < (Date("2021-01-18") - firstdate)) |> DataFrame    
 push!(c_data, (("2021-01-18"),
     (count(i -> (i > 0), week46.S1_seropositive)),
     ((count(i -> (i > 0), week46.S1_seropositive)) / length(week46.S1_seropositive)),

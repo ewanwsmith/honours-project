@@ -22,6 +22,7 @@ end
 # create SampleWeek & SampleMonth
 data.SampleWeek = (broadcast(Dates.firstdayofweek, data.SampleDate))
 data.SampleMonth = (broadcast(Dates.firstdayofmonth, data.SampleDate))
+data |> CSV.write("./honoursproject/data/data.csv")
 
 # filter into months
 Mar20_data = data |> @filter(_.SampleMonth == Date("2020-03-01")) |> DataFrame

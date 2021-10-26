@@ -56,14 +56,3 @@ names(RBD_small_spdf@data)[names(RBD_small_spdf@data) == "name"] <- "Postcode"
 RBD_small_spdf@data <- RBD_small_spdf@data %>%
     left_join(., RBD_dat, by = c("Postcode" = "Postcode"))
 
-# fortify data
-library(broom)
-
-S1_spdf_f <- tidy(S1_spdf)
-
-library(ggplot2)
-
-p <- ggplot() +
-    geom_polygon(data = S1_spdf, aes(x = long, y = lat, group = id), fill = "white", color = "grey") +
-    theme_void() +
-    coord_map()

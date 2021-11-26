@@ -1,3 +1,4 @@
 [deps]
 Cairo = "159f3aea-2a34-519c-b102-8c37f9878175"
 MLJ = "add582a8-e3ab-11e8-2d5e-e98b27df1bc7"
+RCall = "6f49c342-dc21-5d91-9882-a32aef131414"

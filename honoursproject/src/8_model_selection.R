@@ -70,9 +70,9 @@ summary(fit.pos)
 # run stepwise model
 library(MASS)
 pos.step.model <- stepAIC(fit.pos, direction = "backward", 
-                      trace = FALSE)
+                      trace = TRUE)
 summary(pos.step.model)
 
-chisq <- chisq.test(S1train$RBD_seropositive, S1train$CareType)
-library(corrplot)
-corrplot(chisq$residuals, is.corr = FALSE)
+# create separate dfs for RBD seropositive & seronegative for plotting 
+RBD_pos_train = filter(S1train, RBD_seropositive == 1)
+RBD_neg_train = filter(S1train, RBD_seropositive == 0)

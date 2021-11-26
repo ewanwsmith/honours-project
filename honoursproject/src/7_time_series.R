@@ -19,6 +19,7 @@ S1_time_plot <- ggplot(c_dat, aes(x=Date, y=S1)) +
   theme(axis.text.x=element_text(angle=60, hjust=1)) +
   theme_minimal() +
   xlab("")
+  plot(S1_time_plot)
 dev.off()
 
 png(
@@ -31,5 +32,25 @@ RBD_time_plot <- ggplot(c_dat, aes(x=Date, y=RBD)) +
   theme(axis.text.x=element_text(angle=60, hjust=1)) +
   theme_minimal() +
   xlab("")
+  plot(RBD_time_plot)
+dev.off()
+
+
+# two lines on same plot 
+S1count = c_dat[, c("Date", "S1")]
+RBDcount = c_dat[, c("Date", "RBD")]
+
+count <- merge(S1count, RBDcount, by="Date")
+
+library(reshape2)
+countMelted <- melt(count, id.var='Date')
+
+png('./honoursproject/src/plots/two_time_plot.png')
+two_time_plot <- ggplot(countMelted, aes(x=Date, y=value, col=variable)) + 
+  geom_line() +
+  theme_minimal() + 
+  ylab("Positive Sample Count") +
+  labs(colour = "Antigen")
+plot(two_time_plot)
 dev.off()
 

@@ -10,7 +10,7 @@ c_dat$Date <- ymd(c_dat$Date)
 
 library(ggplot2)
 png(
-    file = "./honours-project/honoursproject/src/plots/time_plot_S1.png",
+    file = "./honoursproject/src/plots/time_plot_S1.png",
     width = 600, height = 600
 )
 S1_time_plot <- ggplot(c_dat, aes(x=Date, y=S1)) +
@@ -22,10 +22,10 @@ S1_time_plot <- ggplot(c_dat, aes(x=Date, y=S1)) +
 dev.off()
 
 png(
-    file = "./honours-project/honoursproject/src/plots/time_plot_RBD.png",
+    file = "./honoursproject/src/plots/time_plot_RBD.png",
     width = 600, height = 600
 )
-RBD_time_plot <- ggplot(c_dat, aes(x=Date, y=S1)) +
+RBD_time_plot <- ggplot(c_dat, aes(x=Date, y=RBD)) +
   geom_line() + 
   scale_x_date(date_labels = "%b %y") +
   theme(axis.text.x=element_text(angle=60, hjust=1)) +

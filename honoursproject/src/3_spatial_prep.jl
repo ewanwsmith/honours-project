@@ -296,46 +296,5 @@ push!(c_data, (("2020-12-07"),
     (count(i -> (i > 0), week40.RBD_seropositive)),
     ((count(i -> (i > 0), week40.RBD_seropositive)) / length(week46.RBD_seropositive)),
     )) 
-week41 = data |> @filter(_.DaysSince < (Date("2020-12-14") - firstdate)) |> DataFrame    
-push!(c_data, (("2020-12-14"),
-    (count(i -> (i > 0), week41.S1_seropositive)),
-    ((count(i -> (i > 0), week41.S1_seropositive)) / length(week46.S1_seropositive)),
-    (count(i -> (i > 0), week41.RBD_seropositive)),
-    ((count(i -> (i > 0), week41.RBD_seropositive)) / length(week46.RBD_seropositive)),
-    )) 
-week42 = data |> @filter(_.DaysSince < (Date("2020-12-21") - firstdate)) |> DataFrame    
-push!(c_data, (("2020-12-21"),
-    (count(i -> (i > 0), week42.S1_seropositive)),
-    ((count(i -> (i > 0), week42.S1_seropositive)) / length(week46.S1_seropositive)),
-    (count(i -> (i > 0), week42.RBD_seropositive)),
-    ((count(i -> (i > 0), week42.RBD_seropositive)) / length(week46.RBD_seropositive)),
-    )) 
-week43 = data |> @filter(_.DaysSince < (Date("2020-12-28") - firstdate)) |> DataFrame    
-push!(c_data, (("2020-12-28"),
-    (count(i -> (i > 0), week43.S1_seropositive)),
-    ((count(i -> (i > 0), week43.S1_seropositive)) / length(week46.S1_seropositive)),
-    (count(i -> (i > 0), week43.RBD_seropositive)),
-    ((count(i -> (i > 0), week43.RBD_seropositive)) / length(week46.RBD_seropositive)),
-    )) 
-week44 = data |> @filter(_.DaysSince < (Date("2021-01-04") - firstdate)) |> DataFrame    
-push!(c_data, (("2021-01-04"),
-    (count(i -> (i > 0), week44.S1_seropositive)),
-    ((count(i -> (i > 0), week44.S1_seropositive)) / length(week46.S1_seropositive)),
-    (count(i -> (i > 0), week44.RBD_seropositive)),
-    ((count(i -> (i > 0), week44.RBD_seropositive)) / length(week46.RBD_seropositive)),
-    ))
-week45 = data |> @filter(_.DaysSince < (Date("2021-01-11") - firstdate)) |> DataFrame    
-push!(c_data, (("2021-01-11"),
-    (count(i -> (i > 0), week45.S1_seropositive)),
-    ((count(i -> (i > 0), week45.S1_seropositive)) / length(week46.S1_seropositive)),
-    (count(i -> (i > 0), week45.RBD_seropositive)),
-    ((count(i -> (i > 0), week45.RBD_seropositive)) / length(week46.RBD_seropositive)),
-    ))
-push!(c_data, (("2021-01-18"),
-    (count(i -> (i > 0), week46.S1_seropositive)),
-    ((count(i -> (i > 0), week46.S1_seropositive)) / length(week46.S1_seropositive)),
-    (count(i -> (i > 0), week46.RBD_seropositive)),
-    ((count(i -> (i > 0), week46.RBD_seropositive)) / length(week46.RBD_seropositive)),
-    ))
 
 c_data |> CSV.write("./honoursproject/data/c_data.csv")

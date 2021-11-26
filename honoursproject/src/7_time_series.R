@@ -33,7 +33,3 @@ RBD_time_plot <- ggplot(c_dat, aes(x=Date, y=RBD)) +
   xlab("")
 dev.off()
 
-
-library(plotly)
-int_RBD_time_plot = ggplotly(RBD_time_plot)
-int_S1_time_plot = ggplotly(S1_time_plot)

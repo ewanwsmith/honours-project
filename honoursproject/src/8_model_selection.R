@@ -64,7 +64,7 @@ dim(S1train)
 dim(S1test)
 
 # fit a model with all predictors of interest
-fit.pos <- glm(RBD_seropositive == 1 ~ Age + CareType + SampleDate + PostcodePart + Sex, data = S1train, family = binomial)
+fit.pos <- glm(RBD_seropositive ~ Age + CareType + SampleDate + PostcodePart + Sex, data = S1train, family = binomial)
 summary(fit.pos)
 
 # run stepwise model

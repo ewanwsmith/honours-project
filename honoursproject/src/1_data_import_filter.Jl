@@ -54,7 +54,11 @@ R"postcodes <- ifelse(nchar(postcodes) > 3, paste0(strtrim(postcodes, 3)), postc
 R"library(stringr)"
 R"str_trim(postcodes)"
 R"data <- subset(data, data$PostcodePart %in% postcodes)"
-@rget data
+@rget data postcodes
 
-# save dataframe
+postcodes = unique(postcodes)
+
+
+# save dataframes
+CSV.write("./honoursproject/data/postcodes/postcodes.csv",  Tables.table(postcodes), writeheader=false)
 data |> CSV.write("./honoursproject/data/data.csv")

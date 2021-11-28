@@ -1,4 +1,4 @@
-source("./honoursproject/src/8_model_selection.R")
+source("./honoursproject/src/6_model_selection.R")
 
 # create plotting datasets
 caretype = c("Primary", "Secondary")

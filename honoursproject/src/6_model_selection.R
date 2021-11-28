@@ -53,7 +53,7 @@ summary(step2.model)
 S1pos_dat = filter(study_dat, S1_seropositive == 1)
 
 # split S1pos dataset
-set.seed(2599) 
+set.seed(8698) 
 
 index = sample(1:nrow(S1pos_dat), 0.7*nrow(S1pos_dat)) 
 
@@ -70,7 +70,7 @@ summary(fit.pos)
 # run stepwise model
 library(MASS)
 pos.step.model <- stepAIC(fit.pos, direction = "backward", 
-                      trace = TRUE)
+                      trace = FALSE)
 summary(pos.step.model)
 
 # create separate dfs for RBD seropositive & seronegative for plotting 

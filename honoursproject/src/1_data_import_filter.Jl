@@ -27,10 +27,8 @@ data = filter(data -> !(data.CareType == "Unknown"), data)
 data.SampleWeek = (broadcast(Dates.firstdayofweek, data.SampleDate))
 data.SampleMonth = (broadcast(Dates.firstdayofmonth, data.SampleDate))
 
-
 # remove entries after Christmas lag
 data = filter(data -> (data.SampleDate < Date("2020-12-08")), data)
-
 
 # read in postcode data for GG&C healthcare board
 raw_East_Dunbartonshire_postcode = DataFrame(CSV.File("./honoursproject/data/postcodes/East Dunbartonshire postcodes.csv"; missingstring = "NA"))
@@ -55,10 +53,8 @@ R"library(stringr)"
 R"str_trim(postcodes)"
 R"data <- subset(data, data$PostcodePart %in% postcodes)"
 @rget data postcodes
-
 postcodes = unique(postcodes)
 
-
 # save dataframes
-CSV.write("./honoursproject/data/postcodes/postcodes.csv",  Tables.table(postcodes), writeheader=false)
+CSV.write("./honoursproject/data/postcodes/postcodes.csv",  Tables.table(postcodes), writeheader=true)
 data |> CSV.write("./honoursproject/data/data.csv")

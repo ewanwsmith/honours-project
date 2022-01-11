@@ -19,7 +19,7 @@ sex_pos_pie_plot = ggplot(sex_pos_pie_data, aes(x="", y=sexposcounts, fill=sampl
     theme(
     plot.title=element_text( hjust=0.5, vjust=1, face='bold')
   ) + 
-  guides(fill=guide_legend("Care Type"), face = "bold")
+  guides(fill=guide_legend("Sex"), face = "bold")
 
 # RBD seronegative piechart
 sex_neg_pie_plot = ggplot(sex_neg_pie_data, aes(x="", y=sexnegcounts, fill=samplesex)) +

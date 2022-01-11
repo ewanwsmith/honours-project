@@ -1,16 +1,16 @@
 source("./honoursproject/src/6_model_selection.R")
 
 # create plotting datasets
-caretype = c("Primary", "Secondary")
+samplesex = c("Male", "Female")
 
-poscounts = c(sum(RBD_pos_train$CareType=="Primary"), sum(RBD_pos_train$CareType=="Secondary"))
-pos_pie_data = data.frame(caretype, poscounts)
+sexposcounts = c(sum(RBD_pos_train$Sex=="Male"), sum(RBD_pos_train$Sex=="Female"))
+sex_pos_pie_data = data.frame(samplesex, sexposcounts)
 
-negcounts = c(sum(RBD_neg_train$CareType=="Primary"), sum(RBD_neg_train$CareType=="Secondary"))
-neg_pie_data = data.frame(caretype, negcounts)
+sexnegcounts = c(sum(RBD_neg_train$Sex=="Male"), sum(RBD_neg_train$Sex=="Female"))
+sex_neg_pie_data = data.frame(samplesex, sexnegcounts)
 
 # RBD seropositive piechart
-pos_pie_plot = ggplot(pos_pie_data, aes(x="", y=poscounts, fill=caretype)) +
+sex_pos_pie_plot = ggplot(sex_pos_pie_data, aes(x="", y=sexposcounts, fill=samplesex)) +
   geom_bar(stat="identity", width=1) +
   coord_polar("y", start=0) +
   ggtitle("RBD seropositive") +
@@ -22,7 +22,7 @@ pos_pie_plot = ggplot(pos_pie_data, aes(x="", y=poscounts, fill=caretype)) +
   guides(fill=guide_legend("Care Type"), face = "bold")
 
 # RBD seronegative piechart
-neg_pie_plot = ggplot(neg_pie_data, aes(x="", y=negcounts, fill=caretype)) +
+sex_neg_pie_plot = ggplot(sex_neg_pie_data, aes(x="", y=sexnegcounts, fill=samplesex)) +
   geom_bar(stat="identity", width=1) +
   coord_polar("y", start=0) +
   ggtitle("RBD seronegative") +
@@ -34,7 +34,7 @@ neg_pie_plot = ggplot(neg_pie_data, aes(x="", y=negcounts, fill=caretype)) +
 
 # plot on same sheet
 library(ggpubr)
-png('./honoursproject/src/plots/S1_care_piechart.png')
-care_pie_plot = ggarrange(pos_pie_plot, neg_pie_plot, common.legend=TRUE, legend = "right")
-plot(care_pie_plot)
+png('./honoursproject/src/plots/S1_sex_piechart.png')
+sex_pie_plot = ggarrange(sex_pos_pie_plot, sex_neg_pie_plot, common.legend=TRUE, legend = "right")
+plot(sex_pie_plot)
 dev.off()

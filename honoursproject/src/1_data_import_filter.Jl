@@ -50,7 +50,7 @@ postcodes = vcat(raw_East_Dunbartonshire_postcode.Postcode,
 @rput data postcodes
 R"postcodes <- ifelse(nchar(postcodes) > 3, paste0(strtrim(postcodes, 3)), postcodes)"
 R"library(stringr)"
-R"str_trim(postcodes)"
+#R"str_trim(postcodes)"
 R"data <- subset(data, data$PostcodePart %in% postcodes)"
 @rget data postcodes
 postcodes = unique(postcodes)

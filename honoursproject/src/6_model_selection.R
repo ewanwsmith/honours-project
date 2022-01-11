@@ -59,7 +59,7 @@ summary(step2.model)
 S1pos_dat = filter(study_dat, S1_seropositive == 1)
 
 # split S1pos dataset
-set.seed(8237) 
+set.seed(2599) 
 
 index = sample(1:nrow(S1pos_dat), 0.7*nrow(S1pos_dat)) 
 

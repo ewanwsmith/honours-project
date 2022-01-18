@@ -6,10 +6,10 @@ primary_train = filter(S1train, CareType == "Primary")
 secondary_train = filter(S1train, CareType == "Secondary")
 
 primarycounts = c(sum(primary_train$RBD_seropositive == 1), sum(primary_train$RBD_seropositive == 0))
-primary_pie_data = data.frame(caretype, primarycounts)
+primary_pie_data = data.frame(serotype, primarycounts)
 
 secondarycounts = c(sum(secondary_train$RBD_seropositive == 1), sum(secondary_train$RBD_seropositive == 0))
-secondary_pie_data = data.frame(caretype, secondarycounts)
+secondary_pie_data = data.frame(serotype, secondarycounts)
 
 # RBD seropositive piechart
 primary_pie_plot = ggplot(primary_pie_data, aes(x="", y=primarycounts, fill=serotype)) +
@@ -36,8 +36,10 @@ secondary_pie_plot = ggplot(secondary_pie_data, aes(x="", y=secondarycounts, fil
 
 # plot on same sheet
 library(ggpubr)
-png('./honoursproject/src/plots/S1_care_pichart.png')
+png('./honoursproject/src/plots/S1_care_piechart.png')
 care_pie_plot = ggarrange(primary_pie_plot, secondary_pie_plot, common.legend=TRUE, legend = "right")
 plot(care_pie_plot)
 dev.off()
 
+# piecharts aren't great for dataviz, so barplot of seropositive%
+#carepc = 

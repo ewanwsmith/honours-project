@@ -6,10 +6,10 @@ male_train = filter(S1train, Sex == "Male")
 female_train = filter(S1train, Sex == "Female")
 
 malecounts = c(sum(male_train$RBD_seropositive == 1), sum(male_train$RBD_seropositive == 0))
-male_pie_data = data.frame(sex, malecounts)
+male_pie_data = data.frame(serotype, malecounts)
 
 femalecounts = c(sum(female_train$RBD_seropositive == 1), sum(female_train$RBD_seropositive == 0))
-female_pie_data = data.frame(sex, femalecounts)
+female_pie_data = data.frame(serotype, femalecounts)
 
 # RBD seropositive piechart
 male_pie_plot = ggplot(male_pie_data, aes(x="", y=malecounts, fill=sex)) +

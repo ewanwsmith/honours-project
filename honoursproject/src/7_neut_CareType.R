@@ -42,4 +42,27 @@ plot(care_pie_plot)
 dev.off()
 
 # piecharts aren't great for dataviz, so barplot of seropositive%
-#carepc = 
+caretype = c("Primary Care", "Secondary Care")
+care_pos_count = c(sum(primary_train$RBD_seropositive == 1), sum(secondary_train$RBD_seropositive == 1))
+care_length = c(nrow(primary_train), nrow(secondary_train))
+care_data = data.frame(caretype, care_pos_count, care_length, "care_pos_pc" = ((care_pos_count/care_length)*100))
+
+# z test for proportion
+sink(("./honoursproject/src/output/care_prop.txt"))
+care_prop <- prop.test(x = care_data$care_pos_count, n = care_data$care_length)
+print(care_prop)
+sink()
+
+# barplot
+library(ggpubr)
+png('./honoursproject/src/plots/S1_care_barplot.png')
+care_barplot = ggplot(care_data, aes(x=caretype, y=care_pos_pc, fill = caretype)) + 
+  geom_bar(stat = "identity") +
+  theme_minimal() +
+  theme(legend.position="none") + 
+  xlab("") +
+  ylab("% RBD Seropositivity") +
+  theme(axis.text=element_text(size=14)) +
+  theme(axis.title.y=element_text(size=14))
+plot(care_barplot)
+dev.off()

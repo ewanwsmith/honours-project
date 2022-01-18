@@ -24,7 +24,7 @@ primary_pie_plot = ggplot(primary_pie_data, aes(x="", y=primarycounts, fill=sero
   guides(fill=guide_legend("RBD Seropositivity"), face = "bold")
 
 # RBD seronegative piechart
-secondary_pie_plot = ggplot(secondary_pie_data, aes(x="", y=secondarycounts, fill=caretype)) +
+secondary_pie_plot = ggplot(secondary_pie_data, aes(x="", y=secondarycounts, fill=serotype)) +
   geom_bar(stat="identity", width=1) +
   coord_polar("y", start=0) +
   ggtitle("Secondary Care") +
@@ -36,7 +36,7 @@ secondary_pie_plot = ggplot(secondary_pie_data, aes(x="", y=secondarycounts, fil
 
 # plot on same sheet
 library(ggpubr)
-png('./honoursproject/src/plots/S1_care_piechart.png')
+png('./honoursproject/src/plots/S1_care_pichart.png')
 care_pie_plot = ggarrange(primary_pie_plot, secondary_pie_plot, common.legend=TRUE, legend = "right")
 plot(care_pie_plot)
 dev.off()

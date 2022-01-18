@@ -1,31 +1,33 @@
 source("./honoursproject/src/6_model_selection.R")
 
 # create plotting datasets
-caretype = c("Primary", "Secondary")
+serotype = c("RBD Seropositive", "RBD Seronegative")
+primary_train = filter(S1train, CareType == "Primary")
+secondary_train = filter(S1train, CareType == "Secondary")
 
-poscounts = c(sum(RBD_pos_train$CareType=="Primary"), sum(RBD_pos_train$CareType=="Secondary"))
-pos_pie_data = data.frame(caretype, poscounts)
+primarycounts = c(sum(primary_train$RBD_seropositive == 1), sum(primary_train$RBD_seropositive == 0))
+primary_pie_data = data.frame(caretype, primarycounts)
 
-negcounts = c(sum(RBD_neg_train$CareType=="Primary"), sum(RBD_neg_train$CareType=="Secondary"))
-neg_pie_data = data.frame(caretype, negcounts)
+secondarycounts = c(sum(secondary_train$RBD_seropositive == 1), sum(secondary_train$RBD_seropositive == 0))
+secondary_pie_data = data.frame(caretype, secondarycounts)
 
 # RBD seropositive piechart
-pos_pie_plot = ggplot(pos_pie_data, aes(x="", y=poscounts, fill=caretype)) +
+primary_pie_plot = ggplot(primary_pie_data, aes(x="", y=primarycounts, fill=serotype)) +
   geom_bar(stat="identity", width=1) +
   coord_polar("y", start=0) +
-  ggtitle("RBD seropositive") +
+  ggtitle("Primary Care") +
   theme_void() +
   theme(legend.position="none") +
     theme(
     plot.title=element_text( hjust=0.5, vjust=1, face='bold')
   ) + 
-  guides(fill=guide_legend("Care Type"), face = "bold")
+  guides(fill=guide_legend("RBD Seropositivity"), face = "bold")
 
 # RBD seronegative piechart
-neg_pie_plot = ggplot(neg_pie_data, aes(x="", y=negcounts, fill=caretype)) +
+secondary_pie_plot = ggplot(secondary_pie_data, aes(x="", y=secondarycounts, fill=caretype)) +
   geom_bar(stat="identity", width=1) +
   coord_polar("y", start=0) +
-  ggtitle("RBD seronegative") +
+  ggtitle("Secondary Care") +
   theme_void() + 
   theme(legend.position="none") +
     theme(
@@ -35,6 +37,7 @@ neg_pie_plot = ggplot(neg_pie_data, aes(x="", y=negcounts, fill=caretype)) +
 # plot on same sheet
 library(ggpubr)
 png('./honoursproject/src/plots/S1_care_piechart.png')
-care_pie_plot = ggarrange(pos_pie_plot, neg_pie_plot, common.legend=TRUE, legend = "right")
+care_pie_plot = ggarrange(primary_pie_plot, secondary_pie_plot, common.legend=TRUE, legend = "right")
 plot(care_pie_plot)
 dev.off()
+

@@ -92,12 +92,14 @@ S1test$RBD_predict_factor = rep("0", dim(S1test)[1])
 S1test$RBD_predict_factor[S1test$RBD_predict > .5] = "1"
 
 RBD_predict = (data.frame(table("observed_RBD" = S1test$RBD_seropositive, "predicted_RBD" = S1test$RBD_predict_factor)))
-RBD_predict_results = (sum(RBD_predict[RBD_predict$observed_RBD == 0 & RBD_predict$predicted_RBD == 0]))
+row.names(RBD_predict) <- c("neg_correct", "neg_wrong", "pos_wrong", "pos_correct")
+correct_predict = (RBD_predict[c("neg_correct", "pos_correct"),])
+
 # z test for proportion
 sink(("./honoursproject/src/output/predict_prop.txt"))
-#predict_prop <- prop.test(x = sum(RBD_predict$observed_RBD==), n = sex_data$sex_length)
-#print(sex_prop)
-#sink()
+predict_prop <- prop.test(x = sum(correct_predict$Freq), n = sum(RBD_predict$Freq))
+print(predict_prop)
+sink()
 
 # create separate dfs for RBD seropositive & seronegative for plotting 
 RBD_pos_train = filter(S1train, RBD_seropositive == 1)

@@ -1,0 +1,12 @@
+
+	2-sample test for equality of proportions with continuity correction
+
+data:  sex_data$sex_pos_count out of sex_data$sex_length
+X-squared = 0.87734, df = 1, p-value = 0.3489
+alternative hypothesis: two.sided
+95 percent confidence interval:
+ -0.01799896  0.05235253
+sample estimates:
+   prop 1    prop 2 
+0.6325167 0.6153399 
+

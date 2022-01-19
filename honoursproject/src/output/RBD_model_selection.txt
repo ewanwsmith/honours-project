@@ -1,0 +1,56 @@
+Start:  AIC=4074.46
+as.factor(RBD_seropositive) ~ Age + CareType + SampleDate + PostcodePart + 
+    Sex
+
+               Df Deviance    AIC
+- PostcodePart 48   4013.8 4023.8
+- SampleDate    1   3969.0 4073.0
+<none>              3968.5 4074.5
+- CareType      1   3973.4 4077.4
+- Sex           1   3973.7 4077.7
+- Age           1   4014.9 4118.9
+
+Step:  AIC=4023.82
+as.factor(RBD_seropositive) ~ Age + CareType + SampleDate + Sex
+
+             Df Deviance    AIC
+- SampleDate  1   4014.4 4022.4
+<none>            4013.8 4023.8
+- Sex         1   4017.8 4025.8
+- CareType    1   4020.7 4028.7
+- Age         1   4060.9 4068.9
+
+Step:  AIC=4022.43
+as.factor(RBD_seropositive) ~ Age + CareType + Sex
+
+           Df Deviance    AIC
+<none>          4014.4 4022.4
+- Sex       1   4018.1 4024.1
+- CareType  1   4020.8 4026.8
+- Age       1   4061.2 4067.2
+
+Call:
+glm(formula = as.factor(RBD_seropositive) ~ Age + CareType + 
+    Sex, family = binomial(link = "logit"), data = S1train)
+
+Deviance Residuals: 
+    Min       1Q   Median       3Q      Max  
+-1.7503  -1.3162   0.8673   0.9864   1.2742  
+
+Coefficients:
+                   Estimate Std. Error z value Pr(>|z|)    
+(Intercept)        1.138241   0.126040   9.031  < 2e-16 ***
+Age               -0.013629   0.002014  -6.766 1.32e-11 ***
+CareTypeSecondary  0.190836   0.075587   2.525   0.0116 *  
+SexMale            0.146859   0.076749   1.914   0.0557 .  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 4065.9  on 3067  degrees of freedom
+Residual deviance: 4014.4  on 3064  degrees of freedom
+AIC: 4022.4
+
+Number of Fisher Scoring iterations: 4
+

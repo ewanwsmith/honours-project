@@ -74,6 +74,7 @@ diff_plot <- ggplot(c_dat, aes(x=Date, y=Diff)) +
   theme_minimal(base_size = 30) + 
   geom_area() +
   ylab("")
+  xlab("Difference between S1 and RBD Seropositive Sample Count")
 plot(diff_plot)
 dev.off()
 

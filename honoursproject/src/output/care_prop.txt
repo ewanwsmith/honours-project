@@ -1,0 +1,12 @@
+
+	2-sample test for equality of proportions with continuity correction
+
+data:  care_data$care_pos_count out of care_data$care_length
+X-squared = 3.8335, df = 1, p-value = 0.05024
+alternative hypothesis: two.sided
+95 percent confidence interval:
+ -6.985439e-02  1.894492e-05
+sample estimates:
+   prop 1    prop 2 
+0.6052632 0.6401809 
+

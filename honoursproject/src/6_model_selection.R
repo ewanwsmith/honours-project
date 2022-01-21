@@ -28,28 +28,28 @@ dim(test)
 
 # fit a model with all predictors of interest
 # S1
-fit.1 <- glm(S1_seropositive ~ Age + CareType + SampleDate + PostcodePart + Sex, data = train, family = binomial(link = "logit"))
-summary(fit.1)
+fit_1 <- glm(S1_seropositive ~ Age + CareType + SampleDate + PostcodePart + Sex, data = train, family = binomial(link = "logit"))
+summary(fit_1)
 
 # run stepwise model
 library(MASS)
-step1.model <- stepAIC(fit.1, direction = "backward", 
+step1_model <- stepAIC(fit_1, direction = "backward", 
                       trace = FALSE)
-summary(step1.model)
+summary(step1_model)
 
 # predict S1 serppositivity for test set
-test$S1_predict = (predict(step1.model, test, type="response"))
+test$S1_predict = (predict(step1_model, test, type="response"))
 test$S1_predict_factor = rep("0", dim(test)[1])
 test$S1_predict_factor[test$S1_predict > .5] = "1"
 
 S1_predict = (table(test$S1_seropositive, test$S1_predict_factor))
 
 #RBD
-fit.2 <- glm(RBD_seropositive == 1 ~ Age + CareType + SampleDate + PostcodePart + Sex, data = train, family = binomial)
-summary(fit.1)
+fit_2 <- glm(RBD_seropositive == 1 ~ Age + CareType + SampleDate + PostcodePart + Sex, data = train, family = binomial)
+summary(fit_2)
 
 # run stepwise model
-step2.model <- stepAIC(fit.2, direction = "backward", 
+step2.model <- stepAIC(fit_2, direction = "backward", 
                       trace = FALSE)
 summary(step2.model)
 
@@ -70,21 +70,36 @@ dim(S1train)
 dim(S1test)
 
 # fit a model with all predictors of interest
-fit.pos <- glm(as.factor(RBD_seropositive) ~ Age + CareType + SampleDate + PostcodePart + Sex, data = S1train, family = binomial(link = "logit"))
-summary(fit.pos)
+fit_pos <- glm(as.factor(RBD_seropositive) ~ Age + CareType + SampleDate + PostcodePart + Sex, data = S1train, family = binomial(link = "logit"))
+summary(fit_pos)
 
 # run stepwise model
 library(MASS)
-pos.step.model <- stepAIC(fit.pos, direction = "backward", 
+pos.step.model <- stepAIC(fit_pos, direction = "backward", 
                       trace = FALSE)
 summary(pos.step.model)
+
+# save output as txt
+sink(("./honoursproject/src/output/RBD_model_selection.txt"))
+print(summary(stepAIC(fit_pos, direction = "backward", 
+                      trace = TRUE)))
+sink()
+
 
 # predict RBD serppositivity for test set
 S1test$RBD_predict = (predict(pos.step.model, S1test, type="response"))
 S1test$RBD_predict_factor = rep("0", dim(S1test)[1])
 S1test$RBD_predict_factor[S1test$RBD_predict > .5] = "1"
 
-RBD_predict = (table(S1test$RBD_seropositive, S1test$RBD_predict_factor))
+RBD_predict = (data.frame(table("observed_RBD" = S1test$RBD_seropositive, "predicted_RBD" = S1test$RBD_predict_factor)))
+row.names(RBD_predict) <- c("neg_correct", "neg_wrong", "pos_wrong", "pos_correct")
+correct_predict = (RBD_predict[c("neg_correct", "pos_correct"),])
+
+# z test for proportion
+sink(("./honoursproject/src/output/predict_prop.txt"))
+predict_prop <- prop.test(x = sum(correct_predict$Freq), n = sum(RBD_predict$Freq))
+print(predict_prop)
+sink()
 
 # create separate dfs for RBD seropositive & seronegative for plotting 
 RBD_pos_train = filter(S1train, RBD_seropositive == 1)

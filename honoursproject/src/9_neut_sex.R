@@ -1,31 +1,33 @@
 source("./honoursproject/src/6_model_selection.R")
 
 # create plotting datasets
-samplesex = c("Male", "Female")
+sex = c("Male", "Female")
+male_train = filter(S1train, Sex == "Male")
+female_train = filter(S1train, Sex == "Female")
 
-sexposcounts = c(sum(RBD_pos_train$Sex=="Male"), sum(RBD_pos_train$Sex=="Female"))
-sex_pos_pie_data = data.frame(samplesex, sexposcounts)
+malecounts = c(sum(male_train$RBD_seropositive == 1), sum(male_train$RBD_seropositive == 0))
+male_pie_data = data.frame(serotype, malecounts)
 
-sexnegcounts = c(sum(RBD_neg_train$Sex=="Male"), sum(RBD_neg_train$Sex=="Female"))
-sex_neg_pie_data = data.frame(samplesex, sexnegcounts)
+femalecounts = c(sum(female_train$RBD_seropositive == 1), sum(female_train$RBD_seropositive == 0))
+female_pie_data = data.frame(serotype, femalecounts)
 
 # RBD seropositive piechart
-sex_pos_pie_plot = ggplot(sex_pos_pie_data, aes(x="", y=sexposcounts, fill=samplesex)) +
+male_pie_plot = ggplot(male_pie_data, aes(x="", y=malecounts, fill=sex)) +
   geom_bar(stat="identity", width=1) +
   coord_polar("y", start=0) +
-  ggtitle("RBD seropositive") +
+  ggtitle("Male") +
   theme_void() +
   theme(legend.position="none") +
     theme(
     plot.title=element_text( hjust=0.5, vjust=1, face='bold')
   ) + 
-  guides(fill=guide_legend("Sex"), face = "bold")
+  guides(fill=guide_legend("RBD Seropositivity"), face = "bold")
 
 # RBD seronegative piechart
-sex_neg_pie_plot = ggplot(sex_neg_pie_data, aes(x="", y=sexnegcounts, fill=samplesex)) +
+female_pie_plot = ggplot(female_pie_data, aes(x="", y=femalecounts, fill=sex)) +
   geom_bar(stat="identity", width=1) +
   coord_polar("y", start=0) +
-  ggtitle("RBD seronegative") +
+  ggtitle("Female") +
   theme_void() + 
   theme(legend.position="none") +
     theme(
@@ -35,6 +37,32 @@ sex_neg_pie_plot = ggplot(sex_neg_pie_data, aes(x="", y=sexnegcounts, fill=sampl
 # plot on same sheet
 library(ggpubr)
 png('./honoursproject/src/plots/S1_sex_piechart.png')
-sex_pie_plot = ggarrange(sex_pos_pie_plot, sex_neg_pie_plot, common.legend=TRUE, legend = "right")
+sex_pie_plot = ggarrange(male_pie_plot, female_pie_plot, common.legend=TRUE, legend = "right")
 plot(sex_pie_plot)
+dev.off()
+
+# piecharts aren't great for dataviz, so barplot of seropositive%
+sex = c("Male", "Female")
+sex_pos_count = c(sum(male_train$RBD_seropositive == 1), sum(female_train$RBD_seropositive == 1))
+sex_length = c(nrow(male_train), nrow(female_train))
+sex_data = data.frame(sex, sex_pos_count, sex_length, "sex_pos_pc" = ((sex_pos_count/sex_length)*100))
+
+# z test for proportion
+sink(("./honoursproject/src/output/sex_prop.txt"))
+sex_prop <- prop.test(x = sex_data$sex_pos_count, n = sex_data$sex_length)
+print(sex_prop)
+sink()
+
+# barplot
+library(ggpubr)
+png('./honoursproject/src/plots/S1_sex_barplot.png')
+sex_barplot = ggplot(sex_data, aes(x=sex, y=sex_pos_pc, fill = sex)) + 
+  geom_bar(stat = "identity") +
+  theme_minimal() +
+  theme(legend.position="none") + 
+  xlab("") +
+  ylab("% RBD Seropositivity") +
+  theme(axis.text=element_text(size=14)) +
+  theme(axis.title.y=element_text(size=14))
+plot(sex_barplot)
 dev.off()

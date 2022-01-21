@@ -23,8 +23,10 @@ age_density_plot = ggplot(data=S1train, aes(x=Age, group=as.factor(RBD_seroposit
     guides(fill=guide_legend(title="RBD Seropositivity"))
 
 # probit regression
+sink(("./honoursproject/src/output/age_probit.txt"))
 age_probit = glm(RBD_seropositive ~ Age, data=S1train, family=binomial(link="probit"))
-
+print(summary(age_probit))
+sink()
 age_probit_plot = ggplot(S1train, aes(x=Age, y=RBD_seropositive)) + 
   geom_point() + 
   stat_smooth(method="glm", method.args=list(family=binomial(link="probit"))) +

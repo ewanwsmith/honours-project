@@ -1,0 +1,12 @@
+
+	1-sample proportions test with continuity correction
+
+data:  sum(correct_predict$Freq) out of sum(RBD_predict$Freq), null probability 0.5
+X-squared = 88.946, df = 1, p-value < 2.2e-16
+alternative hypothesis: true p is not equal to 0.5
+95 percent confidence interval:
+ 0.6036001 0.6564656
+sample estimates:
+        p 
+0.6304183 
+

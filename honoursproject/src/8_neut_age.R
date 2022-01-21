@@ -21,6 +21,7 @@ age_density_plot = ggplot(data=S1train, aes(x=Age, group=as.factor(RBD_seroposit
     geom_density(adjust=1.5, alpha=.4) +
   theme_minimal(base_size = 30) + 
     theme(legend.position="bottom", legend.box = "vertical") +
+    theme(legend.position = c(0.2, 0.8)) +
     guides(fill=guide_legend(title="RBD Seropositivity"))
 
 # probit regression

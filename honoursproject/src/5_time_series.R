@@ -17,7 +17,7 @@ S1_time_plot <- ggplot(c_dat, aes(x=Date, y=S1)) +
   geom_line() + 
   scale_x_date(date_labels = "%b %y") +
   theme(axis.text.x=element_text(angle=60, hjust=1)) +
-  theme_minimal(base_size = 14) + 
+  theme_minimal(base_size = 30) + 
   ylab("Number of S1 Positive Samples") +
   xlab("") +
   ylim(0,5000)
@@ -32,7 +32,7 @@ RBD_time_plot <- ggplot(c_dat, aes(x=Date, y=RBD)) +
   geom_line() + 
   scale_x_date(date_labels = "%b %y") +
   theme(axis.text.x=element_text(angle=60, hjust=1)) +
-  theme_minimal(base_size = 14) + 
+  theme_minimal(base_size = 30) + 
   ylab("Number of RBD Positive Samples") +
   xlab("") +
   ylim(0,5000)
@@ -60,7 +60,7 @@ countMelted <- melt(count, id.var='Date')
 png('./honoursproject/src/plots/two_time_plot.png')
 two_time_plot <- ggplot(countMelted, aes(x=Date, y=value, col=variable)) + 
   geom_line() +
-  theme_minimal(base_size = 14) + 
+  theme_minimal(base_size = 30) + 
   ylab("Positive Sample Count") +
   labs(colour = "Antigen") +
   theme(legend.position = c(0.8, 0.2))
@@ -71,7 +71,7 @@ png('./honoursproject/src/plots/diff_plot.png')
 c_dat$Diff = c_dat$S1 - c_dat$RBD
 diff_plot <- ggplot(c_dat, aes(x=Date, y=Diff)) +
   geom_line() +
-  theme_minimal(base_size = 14) + 
+  theme_minimal(base_size = 30) + 
   geom_area() +
   ylab("")
 plot(diff_plot)

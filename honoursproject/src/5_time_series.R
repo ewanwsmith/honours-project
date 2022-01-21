@@ -41,7 +41,7 @@ dev.off()
 
 png(
     file = "./honoursproject/src/plots/two_together_time_plot_RBD.png",
-    width = 2400, height = 1200
+    width = 1200, height = 2400
 )
 library(ggpubr)
 two_together_time_plot = ggarrange(S1_time_plot, RBD_time_plot, nrow = 2, labels = c("A", "B"))
@@ -80,7 +80,7 @@ dev.off()
 
 png(
     file = "./honoursproject/src/plots/two_together_diff_plot.png",
-    width = 2400, height = 1200
+    width = 1200, height = 2400
 )
 library(ggpubr)
 two_together_diff_plot = ggarrange(two_time_plot, diff_plot, nrow = 2, labels = c("A", "B"))

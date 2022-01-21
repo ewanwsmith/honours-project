@@ -41,7 +41,7 @@ dev.off()
 
 png(
     file = "./honoursproject/src/plots/two_together_time_plot_RBD.png",
-    width = 1200, height = 600
+    width = 2400, height = 1200
 )
 library(ggpubr)
 two_together_time_plot = ggarrange(S1_time_plot, RBD_time_plot, ncol = 2, labels = c("A", "B"))
@@ -67,3 +67,21 @@ two_time_plot <- ggplot(countMelted, aes(x=Date, y=value, col=variable)) +
 plot(two_time_plot)
 dev.off()
 
+png('./honoursproject/src/plots/diff_plot.png')
+c_dat$Diff = c_dat$S1 - c_dat$RBD
+diff_plot <- ggplot(c_dat, aes(x=Date, y=Diff)) +
+  geom_line() +
+  theme_minimal(base_size = 14) + 
+  geom_area() +
+  ylab("")
+plot(diff_plot)
+dev.off()
+
+png(
+    file = "./honoursproject/src/plots/two_together_diff_plot.png",
+    width = 2400, height = 1200
+)
+library(ggpubr)
+two_together_diff_plot = ggarrange(two_time_plot, diff_plot, ncol = 2, labels = c("A", "B"))
+  plot(two_together_diff_plot)
+dev.off()
